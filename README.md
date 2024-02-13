@@ -1,7 +1,11 @@
-# template-repository 🦾
-codering
-Tijdens het opleveren van code zien we graag dat er een README bestand wordt meegeleverd, dit maakt het gemakkelijker voor een ander om met jouw code verder te gaan of er gebruik van te maken.
-Deze README beschrijft het project, wat je nodig hebt om de code te gebruiken en hoe je de code kunt gebruiken. Uiteraard kan dit ietsje afwijken aan de hand van welke taal je hebt geprogrammeerd, maar blijf het liefst zo dicht bij mogelijk bij deze standaarden.
+# Zuidberg Fabriek van de Toekomst oliepomp assemblage automatisering
+
+##Namen:
+**Daniel van Essen**
+**Thijmen Makkinga**
+**Corné van de Bruinhorst**
+
+Tijdens Fabriek van de Toekomst van Windesheim, wordt er aan een project voor het bedrijf Zuidberg gewerkt. De opdracht van het bedrijf is om het proces van het assembleren van oliepompen te versnellen door te automatiseren. 
 
 De volgende dingen zien we graag in een README:
 - beschrijving: graag zien we een korte beschrijving van je project. dus een korte uitleg wat je code doet als je het gebruikt.
