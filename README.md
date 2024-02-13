@@ -1,6 +1,7 @@
 # Zuidberg Fabriek van de Toekomst oliepomp assemblage automatisering
 
-##Namen:
+## Namen
+
 **Daniel van Essen**
 **Thijmen Makkinga**
 **Corné van de Bruinhorst**
