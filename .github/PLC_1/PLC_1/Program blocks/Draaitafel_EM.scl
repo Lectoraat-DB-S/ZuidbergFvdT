@@ -1,0 +1,12 @@
+﻿FUNCTION_BLOCK "Draaitafel_EM"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR 
+      Servo { S7_SetPoint := 'False'} : "Servo_CM";
+      Lock_Cilinder : "Cilinder_CM";
+   END_VAR
+
+
+BEGIN
+END_FUNCTION_BLOCK
+
