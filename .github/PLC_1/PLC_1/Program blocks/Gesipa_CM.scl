@@ -1,0 +1,20 @@
+﻿FUNCTION_BLOCK "Gesipa_CM"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      I_Place_Rivet : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Q_Place_Rivet : Bool;
+      Q_Rivets_Placed : Bool;
+   END_VAR
+
+   VAR 
+      stap : Int;
+   END_VAR
+
+
+BEGIN
+END_FUNCTION_BLOCK
+
