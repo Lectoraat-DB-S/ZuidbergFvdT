@@ -1,0 +1,35 @@
+﻿FUNCTION_BLOCK "Cobot_EM"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      I_Start_Program : Bool;
+      EStop_Cobot : Bool;
+      Cobot_Active : Bool;
+      Program_Completed : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Q_Start_Program : Bool;
+   END_VAR
+
+   VAR 
+      Stap : Int;
+   END_VAR
+
+
+BEGIN
+	CASE #Stap OF
+	    0:
+	        IF #I_Start_Program THEN
+	            #Stap := 1;
+	        END_IF;
+	    1:
+	        #Q_Start_Program := TRUE;
+	        IF #Program_Completed THEN
+	            #Stap := 0;
+	        END_IF;
+	END_CASE;
+	
+	
+END_FUNCTION_BLOCK
+

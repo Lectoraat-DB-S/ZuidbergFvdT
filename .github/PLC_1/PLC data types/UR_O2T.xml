@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V16" />
+  <DocumentInfo>
+    <Created>2024-03-27T10:00:42.1167192Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Advanced</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v4">
+  <Section Name="None">
+    <Member Name="Robot IO" Datatype="&quot;UR_8_O2T_Robot_IO&quot;"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="Robot" Datatype="&quot;UR__O2T_Robot&quot;"><Sections><Section Name="None"><Member Name="SSM: Speed slider fraction mask" Datatype="Bool" /><Member Name="Reserved_1" Datatype="Bool" /><Member Name="Reserved_2" Datatype="Bool" /><Member Name="Reserved_3" Datatype="Bool" /><Member Name="Reserved_4" Datatype="Bool" /><Member Name="Reserved_5" Datatype="Bool" /><Member Name="Reserved_6" Datatype="Bool" /><Member Name="Reserved_7" Datatype="Bool" /><Member Name="Reserved_8_15" Datatype="USInt" /><Member Name="Reserved_16_31" Datatype="UInt" /><Member Name="Speed slider fraction" Datatype="Real" /></Section></Sections></Member><Member Name="IOs" Datatype="&quot;UR__O2T_IOs&quot;"><Sections><Section Name="None"><Member Name="Standard digital output mask" Datatype="USInt" /><Member Name="Configurable digital output mask" Datatype="USInt" /><Member Name="Standard digital outputs" Datatype="USInt" /><Member Name="Configurable digital outputs" Datatype="USInt" /><Member Name="AOM: Analog output mask" Datatype="USInt" /><Member Name="AOT: Analog output types" Datatype="USInt" /><Member Name="TDOM: Tool digital output mask" Datatype="USInt" /><Member Name="TDO: Tool digital output" Datatype="USInt" /><Member Name="Standard analog output" Datatype="Array[0..1] of Real" /></Section></Sections></Member></Section></Sections></Member>
+    <Member Name="Reg 1" Datatype="&quot;UR_9_O2T_Registers&quot;"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="Bits" Datatype="&quot;UR__O2T_bits&quot;"><Sections><Section Name="None"><Member Name="Register" Datatype="Array[0..31] of Bool" /></Section></Sections></Member><Member Name="Ints" Datatype="&quot;UR__O2T_ints&quot;"><Sections><Section Name="None"><Member Name="Register" Datatype="Array[0..11] of DInt" /></Section></Sections></Member><Member Name="Floats" Datatype="&quot;UR__O2T_floats&quot;"><Sections><Section Name="None"><Member Name="Register" Datatype="Array[0..11] of Real" /></Section></Sections></Member></Section></Sections></Member>
+    <Member Name="Reg 2" Datatype="&quot;UR_9_O2T_Registers&quot;"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="Bits" Datatype="&quot;UR__O2T_bits&quot;"><Sections><Section Name="None"><Member Name="Register" Datatype="Array[0..31] of Bool" /></Section></Sections></Member><Member Name="Ints" Datatype="&quot;UR__O2T_ints&quot;"><Sections><Section Name="None"><Member Name="Register" Datatype="Array[0..11] of DInt" /></Section></Sections></Member><Member Name="Floats" Datatype="&quot;UR__O2T_floats&quot;"><Sections><Section Name="None"><Member Name="Register" Datatype="Array[0..11] of Real" /></Section></Sections></Member></Section></Sections></Member>
+  </Section>
+</Sections></Interface>
+      <IsFailsafeCompliant>false</IsFailsafeCompliant>
+      <Name>UR_O2T</Name>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>
