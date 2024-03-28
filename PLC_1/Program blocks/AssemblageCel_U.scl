@@ -13,6 +13,7 @@ VERSION : 0.1
       Lagerpers { S7_SetPoint := 'False'} : "Lagerpers_EM";
       Draaitafel : "Draaitafel_EM";
       Cobot : "Cobot_EM";
+      Gesipa : "Gesipa_CM";
    END_VAR
 
 
@@ -58,7 +59,7 @@ BEGIN
 	#Draaitafel();
 	#Cobot();
 	#Lagerpers();
-	
+	#Gesipa();
 	
 	
 	
