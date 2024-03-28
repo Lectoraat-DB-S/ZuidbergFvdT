@@ -19,16 +19,26 @@ VERSION : 0.1
 BEGIN
 	CASE #Stap OF
 	    0:
-	        #Lagerpers.StartLagerpers := FALSE;
-	        IF
-	            #Start THEN
+	       
+	        IF #Start THEN
 	            #Stap := 1;
 	        END_IF;
 	    1:
 	       #Cobot.I_Start_Program := TRUE;
 	       IF #Cobot.Program_Completed THEN
+	           #Cobot.I_Start_Program := FALSE;
 	           #Stap := 2;
 	       END_IF;
+	       
+	   2:
+	       #Draaitafel.I_Start_Draaitafel := TRUE;
+	       IF #Draaitafel.Q_Draaitafel_Klaar THEN
+	           #Draaitafel.I_Start_Draaitafel := FALSE;
+	           #Stap := 1;
+	       END_IF;
+	            
+	   
+	       
 	    50: //StopState
 	        IF #Start THEN
 	            #Stap := #Prev_Stap;
@@ -49,6 +59,8 @@ BEGIN
 	#Cobot();
 	#Lagerpers();
 	
-	    
+	
+	
+	
 END_FUNCTION_BLOCK
 
