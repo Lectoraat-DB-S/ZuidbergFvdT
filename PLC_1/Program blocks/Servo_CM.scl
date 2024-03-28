@@ -26,21 +26,21 @@ BEGIN
 	            #stap := 1;
 	        END_IF;
 	    1: //wachttijd
-	        "IEC_Timer_0_DB".TON(IN:= "Q_Servo",
-	                            PT:=T#50ms,
-	                            Q=>#tijd);
-	       IF #tijd THEN
-	       "Q_Servo" := FALSE;
-	        #stap := 2;
-	    END_IF;
-	    
-	2:
-	    
-	    #tijd := false;
-	    IF "I_Servo" THEN
-	        #Q_Servo_Klaar := TRUE;
-	        #stap := 0;
-	    END_IF;
+	        "IEC_Timer_0_DB".TON(IN := "Q_Servo",
+	                             PT := T#60ms,
+	                             Q => #tijd);
+	        IF #tijd THEN
+	            "Q_Servo" := FALSE;
+	            #stap := 2;
+	        END_IF;
+	        
+	    2:
+	        
+	        #tijd := false;
+	        IF "I_Servo" THEN
+	            #Q_Servo_Klaar := TRUE;
+	            #stap := 0;
+	        END_IF;
 	        
 	END_CASE;
 	
