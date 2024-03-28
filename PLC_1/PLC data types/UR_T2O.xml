@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V16" />
+  <DocumentInfo>
+    <Created>2024-03-28T09:48:23.0276936Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Advanced</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v4">
+  <Section Name="None">
+    <Member Name="State" Datatype="&quot;UR_1_T2O_State&quot;"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="Robot" Datatype="&quot;UR__T2O_Robot&quot;"><Sections><Section Name="None"><Member Name="Controller major version" Datatype="USInt" /><Member Name="Controller minor version" Datatype="USInt" /><Member Name="Reserved" Datatype="UInt" /><Member Name="Robot mode" Datatype="USInt" /><Member Name="Real time machine seconds" Datatype="USInt" /><Member Name="Real time machine milliseconds" Datatype="UInt" /><Member Name="Real time machine minutes" Datatype="USInt" /><Member Name="Real time machine hours" Datatype="USInt" /><Member Name="Real time machine days" Datatype="UInt" /><Member Name="Robot current [A]" Datatype="Real" /><Member Name="PW: Is power on" Datatype="Bool" /><Member Name="PR: Is program running" Datatype="Bool" /><Member Name="TB: Is teach button pressed" Datatype="Bool" /><Member Name="PB: Is power button pressed" Datatype="Bool" /><Member Name="Reserved_4" Datatype="Bool" /><Member Name="Reserved_5" Datatype="Bool" /><Member Name="Reserved_6" Datatype="Bool" /><Member Name="Reserved_7" Datatype="Bool" /><Member Name="Reserved_8_15" Datatype="USInt" /><Member Name="Reserved_16_31" Datatype="UInt" /><Member Name="Speed slider fraction" Datatype="Real" /></Section></Sections></Member><Member Name="Safety" Datatype="&quot;UR__T2O_Safety&quot;"><Sections><Section Name="None"><Member Name="Safety mode" Datatype="USInt" /><Member Name="Reserved_1" Datatype="USInt" /><Member Name="Reserved_2" Datatype="UInt" /><Member Name="NO: Is normal mode" Datatype="Bool" /><Member Name="RD: Is reduced mode" Datatype="Bool" /><Member Name="PS: Is protective stopped" Datatype="Bool" /><Member Name="RC: Is recovery mode" Datatype="Bool" /><Member Name="SS: Is safeguard stopped" Datatype="Bool" /><Member Name="SES: Is system emergency stopped" Datatype="Bool" /><Member Name="RES: Is robot emergency stopped" Datatype="Bool" /><Member Name="ES: Is emergency stopped" Datatype="Bool" /><Member Name="VL: Is violation" Datatype="Bool" /><Member Name="FT: Is fault" Datatype="Bool" /><Member Name="ST: Is stopped due to safety" Datatype="Bool" /><Member Name="Reserved_11" Datatype="Bool" /><Member Name="Reserved_12" Datatype="Bool" /><Member Name="Reserved_13" Datatype="Bool" /><Member Name="Reserved_14" Datatype="Bool" /><Member Name="Reserved_15" Datatype="Bool" /><Member Name="Reserved_16_31" Datatype="UInt" /></Section></Sections></Member></Section></Sections></Member>
+    <Member Name="IO" Datatype="&quot;UR_2_T2O_IO&quot;"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="IOs" Datatype="&quot;UR__T2O_IOs&quot;"><Sections><Section Name="None"><Member Name="Standard digital inputs" Datatype="USInt" /><Member Name="Configurable digital inputs" Datatype="USInt" /><Member Name="Standard digital outputs" Datatype="USInt" /><Member Name="Configurable digital outputs" Datatype="USInt" /><Member Name="Analog I/O types" Datatype="USInt" /><Member Name="Reserved_8_15" Datatype="USInt" /><Member Name="Reserved_16_31" Datatype="UInt" /><Member Name="Standard analog input [A or V]" Datatype="Array[0..1] of Real" /><Member Name="Standard analog output [A or V]" Datatype="Array[0..1] of Real" /><Member Name="I/O current [A]" Datatype="Real" /><Member Name="Euromap67 input bits" Datatype="Array[0..31] of Bool" /><Member Name="Euromap67 output bits" Datatype="Array[0..31] of Bool" /><Member Name="Euromap67 24V voltage" Datatype="Real" /><Member Name="Euromap67 24V current" Datatype="Real" /></Section></Sections></Member><Member Name="Tool" Datatype="&quot;UR__T2O_Tool&quot;"><Sections><Section Name="None"><Member Name="Tool mode" Datatype="USInt" /><Member Name="Reserved_7_15" Datatype="USInt" /><Member Name="Reserved_16_31" Datatype="UInt" /><Member Name="TDI: Tool Digital Inputs" Datatype="USInt" /><Member Name="TDO: Tool Digital Outputs" Datatype="USInt" /><Member Name="TAIT: Tool Analog Input Types" Datatype="USInt" /><Member Name="Reserved_24_31" Datatype="USInt" /><Member Name="Tool analog input [A or V]" Datatype="Array[0..1] of Real" /><Member Name="Tool output voltage [V]" Datatype="Real" /><Member Name="Tool current [A]" Datatype="Real" /></Section></Sections></Member></Section></Sections></Member>
+    <Member Name="Joints" Datatype="&quot;UR_3_T2O_Joints&quot;"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="Joint position [rad]" Datatype="Array[0..5] of Real" /><Member Name="Joint velocity [rad/s]" Datatype="Array[0..5] of Real" /><Member Name="Joint current [A]" Datatype="Array[0..5] of Real" /><Member Name="Joint temperature [°C]" Datatype="Array[0..5] of Real" /><Member Name="Joint mode" Datatype="Array[0..5] of USInt" /><Member Name="Reserved_9" Datatype="UInt" /></Section></Sections></Member>
+    <Member Name="TCP" Datatype="&quot;UR_4_T2O_TCP&quot;"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="TCP Position (X,Y,Z) [m]" Datatype="Array[0..2] of Real" /><Member Name="TCP Position (RX,RY,RZ) [rad]" Datatype="Array[0..2] of Real" /><Member Name="TCP velocity (X,Y,Z) [m/s]" Datatype="Array[0..2] of Real" /><Member Name="TCP velocity (RX,RY,RZ) [rad/s]" Datatype="Array[0..2] of Real" /><Member Name="TCP force (X,Y,Z) [N]" Datatype="Array[0..2] of Real" /><Member Name="TCP torque (X,Y,Z) [Nm]" Datatype="Array[0..2] of Real" /><Member Name="TCP force scalar [N]" Datatype="Real" /></Section></Sections></Member>
+    <Member Name="Bits" Datatype="&quot;UR_5_T2O_BitRegisters&quot;"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="Register" Datatype="Array[0..63] of Bool" /></Section></Sections></Member>
+    <Member Name="Ints" Datatype="&quot;UR_6_T2O_IntRegisters&quot;"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="Register" Datatype="Array[0..23] of DInt" /></Section></Sections></Member>
+    <Member Name="Floats" Datatype="&quot;UR_7_T2O_FloatRegisters&quot;"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="Register" Datatype="Array[0..23] of Real" /></Section></Sections></Member>
+  </Section>
+</Sections></Interface>
+      <IsFailsafeCompliant>false</IsFailsafeCompliant>
+      <Name>UR_T2O</Name>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

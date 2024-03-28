@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V16" />
+  <DocumentInfo>
+    <Created>2024-03-28T09:48:22.6928434Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Advanced</DisplayName>
+        <DisplayVersion>V16</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v4">
+  <Section Name="None">
+    <Member Name="Robot" Datatype="&quot;UR__T2O_Robot&quot;"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="Controller major version" Datatype="USInt" /><Member Name="Controller minor version" Datatype="USInt" /><Member Name="Reserved" Datatype="UInt" /><Member Name="Robot mode" Datatype="USInt" /><Member Name="Real time machine seconds" Datatype="USInt" /><Member Name="Real time machine milliseconds" Datatype="UInt" /><Member Name="Real time machine minutes" Datatype="USInt" /><Member Name="Real time machine hours" Datatype="USInt" /><Member Name="Real time machine days" Datatype="UInt" /><Member Name="Robot current [A]" Datatype="Real" /><Member Name="PW: Is power on" Datatype="Bool" /><Member Name="PR: Is program running" Datatype="Bool" /><Member Name="TB: Is teach button pressed" Datatype="Bool" /><Member Name="PB: Is power button pressed" Datatype="Bool" /><Member Name="Reserved_4" Datatype="Bool" /><Member Name="Reserved_5" Datatype="Bool" /><Member Name="Reserved_6" Datatype="Bool" /><Member Name="Reserved_7" Datatype="Bool" /><Member Name="Reserved_8_15" Datatype="USInt" /><Member Name="Reserved_16_31" Datatype="UInt" /><Member Name="Speed slider fraction" Datatype="Real" /></Section></Sections></Member>
+    <Member Name="Safety" Datatype="&quot;UR__T2O_Safety&quot;"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="Safety mode" Datatype="USInt" /><Member Name="Reserved_1" Datatype="USInt" /><Member Name="Reserved_2" Datatype="UInt" /><Member Name="NO: Is normal mode" Datatype="Bool" /><Member Name="RD: Is reduced mode" Datatype="Bool" /><Member Name="PS: Is protective stopped" Datatype="Bool" /><Member Name="RC: Is recovery mode" Datatype="Bool" /><Member Name="SS: Is safeguard stopped" Datatype="Bool" /><Member Name="SES: Is system emergency stopped" Datatype="Bool" /><Member Name="RES: Is robot emergency stopped" Datatype="Bool" /><Member Name="ES: Is emergency stopped" Datatype="Bool" /><Member Name="VL: Is violation" Datatype="Bool" /><Member Name="FT: Is fault" Datatype="Bool" /><Member Name="ST: Is stopped due to safety" Datatype="Bool" /><Member Name="Reserved_11" Datatype="Bool" /><Member Name="Reserved_12" Datatype="Bool" /><Member Name="Reserved_13" Datatype="Bool" /><Member Name="Reserved_14" Datatype="Bool" /><Member Name="Reserved_15" Datatype="Bool" /><Member Name="Reserved_16_31" Datatype="UInt" /></Section></Sections></Member>
+  </Section>
+</Sections></Interface>
+      <IsFailsafeCompliant>false</IsFailsafeCompliant>
+      <Name>UR_1_T2O_State</Name>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

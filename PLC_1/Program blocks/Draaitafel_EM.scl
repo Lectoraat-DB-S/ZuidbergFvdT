@@ -1,0 +1,40 @@
+﻿FUNCTION_BLOCK "Draaitafel_EM"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      I_Start_Draaitafel : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Q_Draaitafel_Klaar : Bool;
+   END_VAR
+
+   VAR 
+      Stap : Int;
+      Servo { S7_SetPoint := 'False'} : "Servo_CM";
+      Lock_Cilinder : "Cilinder_CM";
+   END_VAR
+
+
+BEGIN
+	CASE #Stap OF
+	    0:
+	        IF #I_Start_Draaitafel THEN
+	            #Servo.I_Servo_Start := TRUE;
+	            #Q_Draaitafel_Klaar := FALSE;
+	            #Stap := 1;
+	        END_IF;
+	    1:
+	        IF #Servo.Q_Servo_Klaar THEN
+	            #Q_Draaitafel_Klaar := TRUE;
+	            
+	            #Servo.I_Servo_Start := FALSE;
+	            #Stap := 0;
+	        END_IF;
+	END_CASE;
+	
+	
+	#Servo();
+	
+END_FUNCTION_BLOCK
+

@@ -1,0 +1,19 @@
+﻿FUNCTION_BLOCK "Veerinjectie_EM"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR 
+      Cilinder_VeerY { S7_SetPoint := 'False'} : "Cilinder_CM";
+      Stap { S7_SetPoint := 'True'} : Int;
+   END_VAR
+
+
+BEGIN
+	CASE #Stap OF
+	    0: #Cilinder_VeerY.I_Cil_In:= False;
+	        //test
+	        
+	       
+	END_CASE;
+	
+END_FUNCTION_BLOCK
+
