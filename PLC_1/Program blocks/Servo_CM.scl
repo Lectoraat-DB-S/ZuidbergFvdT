@@ -27,7 +27,7 @@ BEGIN
 	        END_IF;
 	    1: //wachttijd
 	        "IEC_Timer_0_DB".TON(IN := "Q_Servo",
-	                             PT := T#50ms,
+	                             PT := T#69ms,
 	                             Q => #tijd);
 	        IF #tijd THEN
 	            "Q_Servo" := FALSE;
