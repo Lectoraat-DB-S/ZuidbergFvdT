@@ -25,6 +25,7 @@ BEGIN
 	            #Stap := 1;
 	        END_IF;
 	    1:
+	       #Draaitafel.I_Start_Draaitafel := FALSE;
 	       #Cobot.I_Start_Program := TRUE;
 	       IF #Cobot.Program_Completed THEN
 	           #Cobot.I_Start_Program := FALSE;
@@ -34,7 +35,6 @@ BEGIN
 	   2:
 	       #Draaitafel.I_Start_Draaitafel := TRUE;
 	       IF #Draaitafel.Q_Draaitafel_Klaar THEN
-	           #Draaitafel.I_Start_Draaitafel := FALSE;
 	           #Stap := 1;
 	       END_IF;
 	            
@@ -56,6 +56,7 @@ BEGIN
 	IF #EStop OR #Cobot.EStop_Cobot THEN
 	    #Stap := 0;
 	END_IF;
+	
 	#Draaitafel();
 	#Cobot();
 	#Lagerpers();

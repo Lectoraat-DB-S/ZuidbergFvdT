@@ -19,10 +19,9 @@ VERSION : 0.1
 
 
 BEGIN
-	#Q_Start_Program := TRUE; //Bit 0
 	CASE #Stap OF
 	    0: //Wacht op start vanuit Unit
-	        #Q_Ready_Program := FALSE; //Bit 1
+	     //   #Q_Ready_Program := FALSE; //Bit 1
 	        IF #I_Start_Program THEN
 	            #Stap := 1;
 	        END_IF;
@@ -33,6 +32,6 @@ BEGIN
 	        END_IF;
 	END_CASE;
 	
-	
+	#Q_Start_Program := TRUE; //Bit 0
 END_FUNCTION_BLOCK
 
