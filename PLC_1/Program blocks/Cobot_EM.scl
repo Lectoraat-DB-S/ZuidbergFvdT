@@ -15,14 +15,15 @@ VERSION : 0.1
 
    VAR 
       Stap : Int;
+      Prev_Stap : Int;
+      EStop { S7_SetPoint := 'False'} : "E-Stop_CM";
    END_VAR
 
 
 BEGIN
-	#Q_Start_Program := TRUE;
 	CASE #Stap OF
-	    0:
-	        #Q_Ready_Program := FALSE;
+	    0: //Wacht op start vanuit Unit
+	     //   #Q_Ready_Program := FALSE; //Bit 1
 	        IF #I_Start_Program THEN
 	            #Stap := 1;
 	        END_IF;
@@ -31,8 +32,19 @@ BEGIN
 	        IF #Program_Completed THEN
 	            #Stap := 0;
 	        END_IF;
+	        
+	    50:
+	        IF "AssemblageCel_U_DB".Start THEN
+	            #Stap := #Prev_Stap;
+	        END_IF;
 	END_CASE;
 	
+	IF "AssemblageCel_U_DB".Stop OR #EStop.EStop_Active THEN
+	    #Stap := 50;
+	END_IF;
 	
+	#Prev_Stap := #Stap - 1;
+	
+	#Q_Start_Program := TRUE; //Bit 0
 END_FUNCTION_BLOCK
 

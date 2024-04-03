@@ -11,7 +11,9 @@ VERSION : 0.1
 
    VAR 
       Stap : Int;
+      Prev_Stap : Int;
       Servo { S7_SetPoint := 'False'} : "Servo_CM";
+      EStop : "E-Stop_CM";
       Lock_Cilinder : "Cilinder_CM";
    END_VAR
 
@@ -19,19 +21,29 @@ VERSION : 0.1
 BEGIN
 	CASE #Stap OF
 	    0:
+	        #Servo.I_Servo_Start := FALSE;
+	        #Q_Draaitafel_Klaar := FALSE;
 	        IF #I_Start_Draaitafel THEN
-	            #Servo.I_Servo_Start := TRUE;
-	            #Q_Draaitafel_Klaar := FALSE;
 	            #Stap := 1;
+	            #Servo.I_Servo_Start := TRUE;
 	        END_IF;
 	    1:
 	        IF #Servo.Q_Servo_Klaar THEN
 	            #Q_Draaitafel_Klaar := TRUE;
-	            
-	            #Servo.I_Servo_Start := FALSE;
 	            #Stap := 0;
 	        END_IF;
+	        
+	    50:
+	        IF "AssemblageCel_U_DB".Start THEN
+	            #Stap := #Prev_Stap;
+	        END_IF;
 	END_CASE;
+	
+	IF "AssemblageCel_U_DB".Stop OR #EStop.EStop_Active THEN
+	    #Stap := 50;
+	END_IF;
+	
+	#Prev_Stap := #Stap - 1;
 	
 	
 	#Servo();
