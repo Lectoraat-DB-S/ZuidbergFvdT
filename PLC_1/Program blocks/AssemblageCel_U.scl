@@ -4,6 +4,7 @@ VERSION : 0.1
    VAR_INPUT 
       Start : Bool;
       Stop : Bool;
+      I_EStop : Bool;
    END_VAR
 
    VAR 
