@@ -4,7 +4,6 @@ VERSION : 0.1
    VAR_INPUT 
       Start : Bool;
       Stop : Bool;
-      EStop : Bool;
    END_VAR
 
    VAR 
@@ -14,18 +13,18 @@ VERSION : 0.1
       Draaitafel : "Draaitafel_EM";
       Cobot : "Cobot_EM";
       Gesipa : "Gesipa_CM";
+      EStop : "E-Stop_CM";
    END_VAR
 
 
 BEGIN
 	CASE #Stap OF
 	    0:
-	       
 	        IF #Start THEN
 	            #Stap := 1;
 	        END_IF;
 	    1:
-	       #Draaitafel.I_Start_Draaitafel := FALSE;
+	        #Draaitafel.I_Start_Draaitafel := FALSE;
 	       #Cobot.I_Start_Program := TRUE;
 	       IF #Cobot.Program_Completed THEN
 	           #Cobot.I_Start_Program := FALSE;
@@ -53,7 +52,7 @@ BEGIN
 	
 	#Prev_Stap := #Stap - 1;
 	
-	IF #EStop OR #Cobot.EStop_Cobot THEN
+	IF #I_EStop OR #Cobot.EStop_Cobot THEN
 	    #Stap := 0;
 	END_IF;
 	

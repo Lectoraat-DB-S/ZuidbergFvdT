@@ -1,9 +1,11 @@
-﻿FUNCTION_BLOCK "Veerinjectie_EM"
+﻿FUNCTION_BLOCK "Veerplaatsing_EM"
 { S7_Optimized_Access := 'TRUE' }
 VERSION : 0.1
    VAR 
       Cilinder_VeerY { S7_SetPoint := 'False'} : "Cilinder_CM";
+      EStop : "E-Stop_CM";
       Stap { S7_SetPoint := 'True'} : Int;
+      Prev_Stap : Int;
    END_VAR
 
 
@@ -12,8 +14,18 @@ BEGIN
 	    0: #Cilinder_VeerY.I_Cil_In:= False;
 	        //test
 	        
-	       
+	    50:
+	        IF "AssemblageCel_U_DB".Start THEN
+	            #Stap := #Prev_Stap;
+	        END_IF;
 	END_CASE;
+	
+	IF "AssemblageCel_U_DB".Stop OR #EStop.EStop_Active THEN
+	    #Stap := 50;
+	END_IF;
+	
+	#Prev_Stap := #Stap - 1;
+	
 	
 END_FUNCTION_BLOCK
 

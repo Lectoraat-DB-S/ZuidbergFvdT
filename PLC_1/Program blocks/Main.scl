@@ -6,13 +6,16 @@ VERSION : 0.1
 BEGIN
 	"AssemblageCel_U_DB".Start := "I_Start";
 	"AssemblageCel_U_DB".Stop := "I_Stop";
-	"AssemblageCel_U_DB".EStop := "I_EStop";
+	"AssemblageCel_U_DB".I_EStop := "I_EStop";
 	"AssemblageCel_U_DB".Lagerpers.Grijper.I_Cil_In := "I_Sensor1";
 	"AssemblageCel_U_DB".Lagerpers.Grijper.I_Cil_Uit := "I_Sensor2";
 	"AssemblageCel_U_DB".Lagerpers.LagerX.I_Cil_In := "I_Sensor3";
 	"AssemblageCel_U_DB".Lagerpers.LagerX.I_Cil_Uit := "I_Sensor4";
 	
 	"AssemblageCel_U_DB".Cobot.EStop_Cobot := "I_State".Safety."ES: Is emergency stopped";
+	"AssemblageCel_U_DB".Cobot.EStop_Cobot := "AssemblageCel_U_DB".EStop.I_EStop;
+	"AssemblageCel_U_DB".EStop.I_EStop := "I_EStop";
+	
 	"AssemblageCel_U_DB".Cobot.Cobot_Active := "I_State".Safety."NO: Is normal mode";
 	"AssemblageCel_U_DB".Cobot.Program_Completed := "I_General_BIT".Register[2];
 	"AssemblageCel_U_DB".Gesipa.I_Place_Rivet := "I_General_BIT".Register[3];
