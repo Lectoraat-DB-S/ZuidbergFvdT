@@ -1,0 +1,20 @@
+﻿FUNCTION_BLOCK "E-Stop_CM"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      I_EStop : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      EStop_Active : Bool;
+   END_VAR
+
+
+BEGIN
+	IF #I_EStop THEN
+	    #EStop_Active := TRUE;
+	ELSE
+	    #EStop_Active := FALSE;
+	END_IF;
+END_FUNCTION_BLOCK
+
