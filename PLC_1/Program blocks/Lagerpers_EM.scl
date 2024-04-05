@@ -44,6 +44,6 @@ BEGIN
 	#LagerX();
 	#LagerY();
 	#Deur();
-	
+	#EStop();
 END_FUNCTION_BLOCK
 

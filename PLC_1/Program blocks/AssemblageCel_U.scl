@@ -11,6 +11,7 @@ VERSION : 0.1
       Stap : Int;
       Prev_Stap : Int;
       Lagerpers { S7_SetPoint := 'False'} : "Lagerpers_EM";
+      Veerplaatsing : "Veerplaatsing_EM";
       Draaitafel : "Draaitafel_EM";
       Cobot : "Cobot_EM";
       Gesipa : "Gesipa_CM";
@@ -56,12 +57,12 @@ BEGIN
 	IF #I_EStop OR #Cobot.EStop_Cobot THEN
 	    #Stap := 0;
 	END_IF;
-	
+	#Veerplaatsing();
 	#Draaitafel();
 	#Cobot();
 	#Lagerpers();
 	#Gesipa();
-	
+	#EStop();
 	
 	
 END_FUNCTION_BLOCK

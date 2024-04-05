@@ -45,7 +45,7 @@ BEGIN
 	
 	#Prev_Stap := #Stap - 1;
 	
-	
+	#EStop();
 	#Servo();
 	
 END_FUNCTION_BLOCK

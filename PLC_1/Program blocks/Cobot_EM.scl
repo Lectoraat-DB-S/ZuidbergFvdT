@@ -46,5 +46,7 @@ BEGIN
 	#Prev_Stap := #Stap - 1;
 	
 	#Q_Start_Program := TRUE; //Bit 0
+	
+	#EStop();
 END_FUNCTION_BLOCK
 

@@ -32,7 +32,7 @@ BEGIN
 	        IF #tijd THEN
 	            "Q_Servo" := FALSE;
 	            #stap := 2;
-	            PT :=
+	            
 	        END_IF;
 	        
 	    2:

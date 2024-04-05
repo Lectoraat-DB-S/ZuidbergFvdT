@@ -2,7 +2,9 @@
 { S7_Optimized_Access := 'TRUE' }
 VERSION : 0.1
    VAR 
-      Cilinder_VeerY { S7_SetPoint := 'False'} : "Cilinder_CM";
+      Cilinder_Veer1Y { S7_SetPoint := 'False'} : "Cilinder_CM";
+      Cilinder_Veer2Y : "Cilinder_CM";
+      Cilinder_Plunjer : "Cilinder_CM";
       EStop : "E-Stop_CM";
       Stap { S7_SetPoint := 'True'} : Int;
       Prev_Stap : Int;
@@ -11,7 +13,7 @@ VERSION : 0.1
 
 BEGIN
 	CASE #Stap OF
-	    0: #Cilinder_VeerY.I_Cil_In:= False;
+	    0: #Cilinder_Veer1Y.I_Cil_In:= False;
 	        //test
 	        
 	    50:
@@ -26,6 +28,10 @@ BEGIN
 	
 	#Prev_Stap := #Stap - 1;
 	
+	#Cilinder_Plunjer();
+	#Cilinder_Veer1Y();
+	#Cilinder_Veer2Y();
+	#EStop();
 	
 END_FUNCTION_BLOCK
 
