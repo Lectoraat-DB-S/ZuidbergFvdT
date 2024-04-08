@@ -7,7 +7,7 @@ BEGIN
 	"AssemblageCel_U_DB".Start := "I_Start";
 	"AssemblageCel_U_DB".Stop := "I_Stop";
 	"AssemblageCel_U_DB".I_EStop := "I_EStop";
-	"AssemblageCel_U_DB".Lagerpers.Grijper.I_Cil_In := "I_Sensor1";
+	"AssemblageCel_U_DB".Reset := "I_Reset";
 	"AssemblageCel_U_DB".Lagerpers.Grijper.I_Cil_Uit := "I_Sensor2";
 	"AssemblageCel_U_DB".Lagerpers.LagerX.I_Cil_In := "I_Sensor3";
 	"AssemblageCel_U_DB".Lagerpers.LagerX.I_Cil_Uit := "I_Sensor4";
@@ -26,10 +26,6 @@ BEGIN
 	
 	"Q_Grijper_Open" := "AssemblageCel_U_DB".Lagerpers.Grijper.Q_Cil_Uit;
 	"Q_Grijper_Dicht" := "AssemblageCel_U_DB".Lagerpers.Grijper.Q_Cil_In;
-	"Q_Lager_DeurDicht" := "AssemblageCel_U_DB".Lagerpers.Deur.I_Cil_Uit;
-	"Q_Lager_DeurOpen" := "AssemblageCel_U_DB".Lagerpers.Deur.I_Cil_In;
-	"Q_LagerX_In" := "AssemblageCel_U_DB".Lagerpers.LagerX.I_Cil_In;
-	"Q_LagerX_Uit" := "AssemblageCel_U_DB".Lagerpers.LagerX.I_Cil_Uit;
 	"Q_LagerY_Omlaag" := "AssemblageCel_U_DB".Lagerpers.LagerY.I_Cil_In;
 	"Q_LagerY_Omhoog" := "AssemblageCel_U_DB".Lagerpers.LagerX.I_Cil_Uit;
 	"Q_General_1".Bits.Register[0] := "AssemblageCel_U_DB".Cobot.Q_Start_Program;

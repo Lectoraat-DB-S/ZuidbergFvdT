@@ -53,6 +53,9 @@ BEGIN
 	        END_IF;
 	END_CASE;
 	
+	#Q_CMD_Uit := #I_CMD_Uit;
+	#Q_CMD_In := #I_CMD_In;
+	
 	
 	#Timer.TON(
 	IN := #Stap = 1 OR #Stap = 3,
