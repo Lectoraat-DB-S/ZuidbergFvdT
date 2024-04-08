@@ -25,23 +25,13 @@ BEGIN
 	            "Q_Servo" := TRUE;
 	            #stap := 1;
 	        END_IF;
-	    1: //wachttijd
-	        "IEC_Timer_0_DB".TON(IN := "Q_Servo",
-	                             PT := T#69ms,
-	                             Q => #tijd);
-	        IF #tijd THEN
-	            "Q_Servo" := FALSE;
-	            #stap := 2;
-	            
-	        END_IF;
-	        
-	    2:
-	        
-	        #tijd := false;
+	    1: 
 	        IF "I_Servo" THEN
 	            #Q_Servo_Klaar := TRUE;
 	            #stap := 0;
 	        END_IF;
+	 
+	        
 	    ELSE
 	        #Q_Servo_Klaar := False;
 	        

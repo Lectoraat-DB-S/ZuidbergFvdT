@@ -1,6 +1,14 @@
 ﻿FUNCTION_BLOCK "Veerplaatsing_EM"
 { S7_Optimized_Access := 'TRUE' }
 VERSION : 0.1
+   VAR_INPUT 
+      Start : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Voltooid : Bool;
+   END_VAR
+
    VAR 
       Cilinder_Veer1Y { S7_SetPoint := 'False'} : "Cilinder_CM";
       Cilinder_Veer2Y : "Cilinder_CM";
@@ -13,9 +21,23 @@ VERSION : 0.1
 
 BEGIN
 	CASE #Stap OF
-	    0: #Cilinder_Veer1Y.I_Cil_In:= False;
-	        //test
+	    0:  #Cilinder_Veer1Y.Q_CMD_In := TRUE;
+	        #Cilinder_Veer2Y.Q_CMD_In := TRUE;
+	        #Cilinder_Plunjer.Q_CMD_In := TRUE;
+	        #Cilinder_Veer1Y.Q_CMD_Uit := FALSE;
+	        #Cilinder_Veer2Y.Q_CMD_Uit := FALSE;
+	        #Cilinder_Plunjer.Q_CMD_Uit := FALSE;
+	        IF #Start THEN
+	            #Stap := 1;
+	        END_IF;
 	        
+	    1:
+	        #Cilinder_Veer1Y.Q_CMD_In := TRUE;
+	        #Cilinder_Veer2Y.Q_CMD_In := TRUE;
+	        #Cilinder_Plunjer.Q_CMD_In := TRUE;
+	        #Cilinder_Veer1Y.Q_CMD_Uit := FALSE;
+	        #Cilinder_Veer2Y.Q_CMD_Uit := FALSE;
+	        #Cilinder_Plunjer.Q_CMD_Uit := FALSE;
 	    50:
 	        IF "AssemblageCel_U_DB".Start THEN
 	            #Stap := #Prev_Stap;

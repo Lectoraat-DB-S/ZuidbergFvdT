@@ -34,6 +34,7 @@ BEGIN
 	        END_IF;
 	        
 	    50:
+	        
 	        IF "AssemblageCel_U_DB".Start THEN
 	            #Stap := #Prev_Stap;
 	        END_IF;

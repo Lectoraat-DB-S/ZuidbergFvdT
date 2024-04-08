@@ -3,6 +3,7 @@
 VERSION : 0.1
    VAR_INPUT 
       Start : Bool;
+      Reset : Bool;
       Stop : Bool;
       I_EStop : Bool;
    END_VAR
@@ -38,7 +39,13 @@ BEGIN
 	       IF #Draaitafel.Q_Draaitafel_Klaar THEN
 	           #Stap := 1;
 	       END_IF;
-	            
+	   3:
+	       #Veerplaatsing.Start := true;
+	       #Lagerpers.Start := True;
+	       
+	       IF #Lagerpers.Voltooid AND #Veerplaatsing.Voltooid THEN
+	           #Stap:= 1;
+	       END_IF;
 	   
 	       
 	    50: //StopState
@@ -55,8 +62,13 @@ BEGIN
 	#Prev_Stap := #Stap - 1;
 	
 	IF #I_EStop OR #Cobot.EStop_Cobot THEN
+	    #Stap := 50;
+	END_IF;
+	
+	IF #Reset THEN
 	    #Stap := 0;
 	END_IF;
+	
 	#Veerplaatsing();
 	#Draaitafel();
 	#Cobot();
