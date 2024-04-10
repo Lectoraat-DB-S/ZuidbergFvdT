@@ -26,30 +26,41 @@ BEGIN
 	        IF #Start THEN
 	            #Stap := 1;
 	        END_IF;
+	        
 	    1:
-	        #Draaitafel.I_Start_Draaitafel := FALSE;
-	        #Cobot.I_Start_Program := TRUE;
-	        IF #Cobot.Program_Completed THEN
-	            #Cobot.I_Start_Program := FALSE;
+	        #Draaitafel.I_Draaitafel_Home := TRUE;
+	        IF #Draaitafel.Q_Draaitafel_Ready THEN
+	            #Draaitafel.I_Draaitafel_Home := FALSE;
 	            #Stap := 2;
 	        END_IF;
-	        
 	    2:
-	        #Draaitafel.I_Start_Draaitafel := TRUE;
-	        IF #Draaitafel.Q_Draaitafel_Klaar THEN
-	            #Stap := 1;
-	        END_IF;
-	    3:
-	        #Veerplaatsing.Start := true;
-	        #Lagerpers.Start := True;
-	        
-	        IF #Lagerpers.Voltooid AND #Veerplaatsing.Voltooid THEN
-	            #Stap := 1;
-	        END_IF;
-	        
-	        //test
-	        
-	    50: //StopState
+	       #Draaitafel.I_Start_Draaitafel := FALSE;
+	       #Cobot.I_Start_Program := TRUE;
+	       IF #Cobot.Program_Completed THEN
+	           #Cobot.I_Start_Program := FALSE;
+	           #Stap := 2;
+	       END_IF;
+	       
+	   3:
+	       #Draaitafel.I_Start_Draaitafel := TRUE;
+	       IF #Draaitafel.Q_Draaitafel_Klaar THEN
+	           #Stap := 4;
+	       END_IF;
+	   4:
+	       #Cobot.I_Start_Program := TRUE;
+	       #Veerplaatsing.Start := TRUE;
+	       #Lagerpers.Start := TRUE;
+	       
+	       IF #Lagerpers.Voltooid AND #Veerplaatsing.Voltooid AND #Cobot.Program_Completed THEN
+	           #Cobot.I_Start_Program := FALSE;
+	           #Veerplaatsing.Start := FALSE;
+	           #Lagerpers.Start := FALSE;
+	           #Stap:= 3;
+	       END_IF;
+	   
+	       
+	   50: //StopState
+	       
 	        IF #Start THEN
 	            #Stap := #Prev_Stap;
 	        END_IF;
