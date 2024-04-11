@@ -37,8 +37,8 @@ BEGIN
 	        END_IF;
 	 
 	        
-	    ELSE
-	        #Q_Servo_Klaar := False;
+	  //  ELSE
+	     //   #Q_Servo_Klaar := False;
 	        
 	END_CASE;
 	

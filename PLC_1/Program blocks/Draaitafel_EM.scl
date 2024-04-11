@@ -23,6 +23,7 @@ VERSION : 0.1
 BEGIN
 	CASE #Stap OF
 	    0:
+	        #Stap := 2;
 	        #Q_Draaitafel_Ready := FALSE;
 	        IF #I_Draaitafel_Home THEN
 	            //homing
@@ -42,9 +43,10 @@ BEGIN
 	        #Q_Draaitafel_Klaar := FALSE;
 	        IF #I_Start_Draaitafel THEN
 	            #Stap := 3;
-	            #Servo.I_Servo_Start := TRUE;
+	            
 	        END_IF;
 	    3:
+	        #Servo.I_Servo_Start := TRUE;
 	        IF #Servo.Q_Servo_Klaar THEN
 	            #Q_Draaitafel_Klaar := TRUE;
 	            #Stap := 2;

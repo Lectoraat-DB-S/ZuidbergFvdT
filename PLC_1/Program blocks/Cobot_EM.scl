@@ -3,14 +3,18 @@
 VERSION : 0.1
    VAR_INPUT 
       I_Start_Program : Bool;
+      I_Loop_Program : Bool;
       EStop_Cobot : Bool;
+      Position : Bool;
       Cobot_Active : Bool;
       Program_Completed : Bool;
    END_VAR
 
    VAR_OUTPUT 
       Q_Start_Program : Bool;
+      Q_Stop_Program : Bool;
       Q_Ready_Program : Bool;
+      Q_OUT : USInt;
    END_VAR
 
    VAR 
@@ -23,15 +27,40 @@ VERSION : 0.1
 BEGIN
 	CASE #Stap OF
 	    0: //Wacht op start vanuit Unit
-	     //   #Q_Ready_Program := FALSE; //Bit 1
+	        #Q_Ready_Program := TRUE; //Bit 1
+	        #Q_Start_Program := FALSE; //Bit 0
+	        #Q_Stop_Program := TRUE; //Bit 2
 	        IF #I_Start_Program THEN
 	            #Stap := 1;
 	        END_IF;
 	    1:
 	        #Q_Ready_Program := TRUE;
+	        #Q_Stop_Program := FALSE;
+	        #Q_Start_Program := TRUE;
 	        IF #Program_Completed THEN
-	            #Stap := 0;
+	            #Stap := 2;
 	        END_IF;
+	        
+	    2:
+	        #Q_Ready_Program := FALSE; //Bit 1
+	        #Q_Start_Program := FALSE;
+	        #Q_Stop_Program := FALSE;
+	        IF #I_Loop_Program THEN
+	            #Stap := 3;
+	        END_IF;
+	        
+	    3:  
+	        #Q_Ready_Program := TRUE;
+	        IF #Position THEN
+	            #Stap:= 4;
+	        END_IF;
+	        
+	    4:
+	        #Q_Ready_Program := FALSE;
+	        IF #Program_Completed THEN
+	            #Stap := 2;
+	        END_IF;
+	        
 	        
 	    50:
 	        IF "AssemblageCel_U_DB".Start THEN
@@ -45,6 +74,7 @@ BEGIN
 	
 	#Prev_Stap := #Stap - 1;
 	
+	#Q_OUT := 1;
 	#Q_Start_Program := TRUE; //Bit 0
 	
 	#EStop();
