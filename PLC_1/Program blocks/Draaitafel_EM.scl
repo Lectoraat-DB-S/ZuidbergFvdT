@@ -2,11 +2,13 @@
 { S7_Optimized_Access := 'TRUE' }
 VERSION : 0.1
    VAR_INPUT 
+      I_Draaitafel_Home : Bool;
       I_Start_Draaitafel : Bool;
    END_VAR
 
    VAR_OUTPUT 
       Q_Draaitafel_Klaar : Bool;
+      Q_Draaitafel_Ready : Bool;
    END_VAR
 
    VAR 
@@ -21,16 +23,33 @@ VERSION : 0.1
 BEGIN
 	CASE #Stap OF
 	    0:
+	        #Stap := 2;
+	        #Q_Draaitafel_Ready := FALSE;
+	        IF #I_Draaitafel_Home THEN
+	            //homing
+	            #Servo.I_Servo_Home_CMD := TRUE;
+	            #Stap := 1;
+	        END_IF;
+	        
+	    1:
+	        IF #Servo.I_Servo_Inhome THEN
+	            // homing voltooid
+	            #Servo.I_Servo_Home_CMD := FALSE;
+	            #Q_Draaitafel_Ready := TRUE;
+	            #Stap := 2;
+	        END_IF;
+	    2:
 	        #Servo.I_Servo_Start := FALSE;
 	        #Q_Draaitafel_Klaar := FALSE;
 	        IF #I_Start_Draaitafel THEN
-	            #Stap := 1;
-	            #Servo.I_Servo_Start := TRUE;
+	            #Stap := 3;
+	            
 	        END_IF;
-	    1:
+	    3:
+	        #Servo.I_Servo_Start := TRUE;
 	        IF #Servo.Q_Servo_Klaar THEN
 	            #Q_Draaitafel_Klaar := TRUE;
-	            #Stap := 0;
+	            #Stap := 2;
 	        END_IF;
 	        
 	    50:
@@ -38,6 +57,8 @@ BEGIN
 	        IF "AssemblageCel_U_DB".Start THEN
 	            #Stap := #Prev_Stap;
 	        END_IF;
+	    ELSE
+	        #Stap := 2;
 	END_CASE;
 	
 	IF "AssemblageCel_U_DB".Stop OR #EStop.EStop_Active THEN

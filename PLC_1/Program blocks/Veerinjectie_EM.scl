@@ -3,6 +3,8 @@
 VERSION : 0.1
    VAR_INPUT 
       Start : Bool;
+      Stop : Bool;
+      Estop_1 : Bool;
    END_VAR
 
    VAR_OUTPUT 
@@ -27,28 +29,44 @@ BEGIN
 	        #Cilinder_Veer1Y.Q_CMD_Uit := FALSE;
 	        #Cilinder_Veer2Y.Q_CMD_Uit := FALSE;
 	        #Cilinder_Plunjer.Q_CMD_Uit := FALSE;
-	        IF #Start THEN
+	        IF #Cilinder_Plunjer.I_CMD_In AND #Cilinder_Veer1Y.I_CMD_In AND #Cilinder_Veer2Y.I_CMD_In THEN
 	            #Stap := 1;
 	        END_IF;
 	        
 	    1:
+	        #Voltooid := FALSE;
+	            IF #Start THEN
+	                #Stap := 2;
+	            END_IF;
+	    2:
+	        #Cilinder_Veer1Y.Q_CMD_In := FALSE;
+	        #Cilinder_Veer2Y.Q_CMD_In := FALSE;
+	        #Cilinder_Plunjer.Q_CMD_In := FALSE;
+	        #Cilinder_Veer1Y.Q_CMD_Uit := TRUE;
+	        #Cilinder_Veer2Y.Q_CMD_Uit := TRUE;
+	        #Cilinder_Plunjer.Q_CMD_Uit := TRUE;
+	        IF #Cilinder_Plunjer.I_CMD_Uit AND #Cilinder_Veer1Y.I_CMD_Uit AND #Cilinder_Veer2Y.I_CMD_Uit THEN
+	            #Voltooid := TRUE;
+	            #Stap := 0;
+	        END_IF;
+	    20:
 	        #Cilinder_Veer1Y.Q_CMD_In := TRUE;
 	        #Cilinder_Veer2Y.Q_CMD_In := TRUE;
 	        #Cilinder_Plunjer.Q_CMD_In := TRUE;
 	        #Cilinder_Veer1Y.Q_CMD_Uit := FALSE;
 	        #Cilinder_Veer2Y.Q_CMD_Uit := FALSE;
 	        #Cilinder_Plunjer.Q_CMD_Uit := FALSE;
-	    50:
 	        IF "AssemblageCel_U_DB".Start THEN
 	            #Stap := #Prev_Stap;
 	        END_IF;
 	END_CASE;
 	
-	IF "AssemblageCel_U_DB".Stop OR #EStop.EStop_Active THEN
-	    #Stap := 50;
+	IF #Stop OR #EStop.EStop_Active THEN
+	    IF #Stap <> 20 THEN
+	        #Prev_Stap := #Stap;
+	    END_IF;
+	    #Stap := 20;
 	END_IF;
-	
-	#Prev_Stap := #Stap - 1;
 	
 	#Cilinder_Plunjer();
 	#Cilinder_Veer1Y();

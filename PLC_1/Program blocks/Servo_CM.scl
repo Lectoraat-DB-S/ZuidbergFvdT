@@ -4,10 +4,15 @@ VERSION : 0.1
    VAR_INPUT 
       Active : Bool;
       I_Servo_Start : Bool;
+      I_Servo_CMD : Bool;
+      I_Servo_Home_CMD : Bool;
+      I_Servo_Inhome : Bool;
    END_VAR
 
    VAR_OUTPUT 
       Q_Servo_Klaar : Bool;
+      Q_Servo_CMD : Bool;
+      Q_Servo_Home : Bool;
    END_VAR
 
    VAR 
@@ -19,23 +24,33 @@ VERSION : 0.1
 BEGIN
 	CASE #stap OF
 	    0:
-	        "Q_Servo" := FALSE;
+	        #Q_Servo_CMD := FALSE;
 	        IF #I_Servo_Start THEN
 	            #Q_Servo_Klaar := FALSE;
-	            "Q_Servo" := TRUE;
+	            #Q_Servo_CMD := TRUE;
 	            #stap := 1;
 	        END_IF;
 	    1: 
-	        IF "I_Servo" THEN
+	        IF #I_Servo_CMD THEN
 	            #Q_Servo_Klaar := TRUE;
 	            #stap := 0;
 	        END_IF;
 	 
 	        
-	    ELSE
-	        #Q_Servo_Klaar := False;
+	  //  ELSE
+	     //   #Q_Servo_Klaar := False;
 	        
 	END_CASE;
 	
+	IF #I_Servo_Home_CMD THEN
+	    #Q_Servo_Home := TRUE;
+	ELSE
+	    #Q_Servo_Home := FALSE;
+	END_IF;
+	
+	IF #I_Servo_Inhome THEN
+	    #Q_Servo_Home := FALSE;
+	END_IF;
+	    
 END_FUNCTION_BLOCK
 
