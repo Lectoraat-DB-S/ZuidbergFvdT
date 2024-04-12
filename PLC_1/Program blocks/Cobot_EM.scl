@@ -62,17 +62,18 @@ BEGIN
 	        END_IF;
 	        
 	        
-	    50:
+	    20:
 	        IF "AssemblageCel_U_DB".Start THEN
 	            #Stap := #Prev_Stap;
 	        END_IF;
 	END_CASE;
 	
-	IF "AssemblageCel_U_DB".Stop OR #EStop.EStop_Active THEN
-	    #Stap := 50;
+	IF "AssemblageCel_U_DB".Stop THEN
+	    IF #Stap <> 20 THEN
+	        #Prev_Stap := #Stap;
+	    END_IF;
+	    #Stap := 20;
 	END_IF;
-	
-	#Prev_Stap := #Stap - 1;
 	
 	#Q_OUT := 1;
 	#Q_Start_Program := TRUE; //Bit 0
