@@ -12,9 +12,9 @@ VERSION : 0.1
    END_VAR
 
    VAR 
-      Cilinder_Veer1Y { S7_SetPoint := 'False'} : "Cilinder_CM";
-      Cilinder_Veer2Y : "Cilinder_CM";
-      Cilinder_Plunjer : "Cilinder_CM";
+      Geleider { S7_SetPoint := 'False'} : "CilinderM52_CM";
+      Sluis : "CilinderB52_CM";
+      Plunjer_Pusher : "CilinderB52_CM";
       EStop : "E-Stop_CM";
       Stap { S7_SetPoint := 'True'} : Int;
       Prev_Stap : Int;
@@ -23,40 +23,57 @@ VERSION : 0.1
 
 BEGIN
 	CASE #Stap OF
-	    0:  #Cilinder_Veer1Y.Q_CMD_In := TRUE;
-	        #Cilinder_Veer2Y.Q_CMD_In := TRUE;
-	        #Cilinder_Plunjer.Q_CMD_In := TRUE;
-	        #Cilinder_Veer1Y.Q_CMD_Uit := FALSE;
-	        #Cilinder_Veer2Y.Q_CMD_Uit := FALSE;
-	        #Cilinder_Plunjer.Q_CMD_Uit := FALSE;
-	        IF #Cilinder_Plunjer.I_CMD_In AND #Cilinder_Veer1Y.I_CMD_In AND #Cilinder_Veer2Y.I_CMD_In THEN
-	            #Stap := 1;
-	        END_IF;
+	    0: //begin state, alle cilinders in en wacht op input vanuit U
+	        #Geleider.CMD_In := TRUE;
+	        #Geleider.CMD_Uit := FALSE;
+	        #Sluis.CMD_In := TRUE;
+	        #Sluis.CMD_Uit := FALSE;
+	        #Plunjer_Pusher.CMD_In := TRUE;
+	        #Plunjer_Pusher.CMD_Uit := FALSE;
+	        #Voltooid := TRUE;
 	        
-	    1:
-	        #Voltooid := FALSE;
-	            IF #Start THEN
-	                #Stap := 2;
-	            END_IF;
-	    2:
-	        #Cilinder_Veer1Y.Q_CMD_In := FALSE;
-	        #Cilinder_Veer2Y.Q_CMD_In := FALSE;
-	        #Cilinder_Plunjer.Q_CMD_In := FALSE;
-	        #Cilinder_Veer1Y.Q_CMD_Uit := TRUE;
-	        #Cilinder_Veer2Y.Q_CMD_Uit := TRUE;
-	        #Cilinder_Plunjer.Q_CMD_Uit := TRUE;
-	        IF #Cilinder_Plunjer.I_CMD_Uit AND #Cilinder_Veer1Y.I_CMD_Uit AND #Cilinder_Veer2Y.I_CMD_Uit THEN
-	            #Voltooid := TRUE;
-	            #Stap := 0;
+	        IF #Start THEN
+	            #Stap := #Stap + 1;
 	        END_IF;
-	    20:
-	        #Cilinder_Veer1Y.Q_CMD_In := TRUE;
-	        #Cilinder_Veer2Y.Q_CMD_In := TRUE;
-	        #Cilinder_Plunjer.Q_CMD_In := TRUE;
-	        #Cilinder_Veer1Y.Q_CMD_Uit := FALSE;
-	        #Cilinder_Veer2Y.Q_CMD_Uit := FALSE;
-	        #Cilinder_Plunjer.Q_CMD_Uit := FALSE;
-	        IF "AssemblageCel_U_DB".Start THEN
+	    1://geleider naar beneden
+	        #Voltooid := FALSE;
+	        #Geleider.CMD_Uit := TRUE;
+	        #Geleider.CMD_In := FALSE;
+	        IF #Geleider.Cil_Uit THEN
+	            #Stap := #Stap + 1;
+	        END_IF;
+	    2: //product invoeren
+	        #Sluis.CMD_In := FALSE;
+	        #Sluis.CMD_Uit := TRUE;
+	        IF #Sluis.Cil_Uit THEN
+	            #Stap := #Stap + 1;
+	        END_IF;
+	    3: //reset invoer
+	        #Sluis.CMD_In := FALSE;
+	        #Sluis.CMD_Uit := TRUE;
+	        IF #Sluis.Cil_Uit THEN
+	            #Stap := #Stap + 1;
+	        END_IF;
+	    4: //geleider omhoog
+	        #Geleider.CMD_Uit := FALSE;
+	        #Geleider.CMD_In := TRUE;
+	        IF #Geleider.Cil_In THEN
+	            #Stap := #Stap + 1;
+	        END_IF;
+	    5://plunjer nadrukken
+	        #Plunjer_Pusher.CMD_Uit := TRUE;
+	        #Plunjer_Pusher.CMD_In := FALSE;
+	        IF #Plunjer_Pusher.Cil_Uit THEN
+	            #Stap := #Stap + 1;
+	        END_IF;
+	    6:
+	        #Plunjer_Pusher.CMD_Uit := FALSE;
+	        #Plunjer_Pusher.CMD_In := TRUE;
+	        IF #Plunjer_Pusher.Cil_In THEN
+	            #Stap := #Stap + 0;
+	        END_IF;
+	    20: //stopstate
+	        IF #Start THEN
 	            #Stap := #Prev_Stap;
 	        END_IF;
 	END_CASE;
@@ -68,10 +85,11 @@ BEGIN
 	    #Stap := 20;
 	END_IF;
 	
-	#Cilinder_Plunjer();
-	#Cilinder_Veer1Y();
-	#Cilinder_Veer2Y();
+	#Plunjer_Pusher();
+	#Geleider();
+	#Sluis();
 	#EStop();
+	
 	
 END_FUNCTION_BLOCK
 

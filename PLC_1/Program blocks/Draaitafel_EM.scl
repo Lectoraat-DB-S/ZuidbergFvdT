@@ -16,7 +16,7 @@ VERSION : 0.1
       Prev_Stap : Int;
       Servo { S7_SetPoint := 'False'} : "Servo_CM";
       EStop : "E-Stop_CM";
-      Lock_Cilinder : "Cilinder_CM";
+      Lock_Cilinder : "CilinderM52_CM";
    END_VAR
 
 
