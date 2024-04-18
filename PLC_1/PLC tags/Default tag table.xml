@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V16" />
   <DocumentInfo>
-    <Created>2024-04-12T10:00:18.9121352Z</Created>
+    <Created>2024-04-18T09:00:56.3851939Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -192,12 +192,12 @@
       </SW.Tags.PlcTag>
       <SW.Tags.PlcTag ID="16" CompositionName="Tags">
         <AttributeList>
-          <DataTypeName>"UR_8_O2T_Robot_IO"</DataTypeName>
+          <DataTypeName>Bool</DataTypeName>
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q2.0</LogicalAddress>
-          <Name>Q_Rotot_IO</Name>
+          <LogicalAddress>%I0.1</LogicalAddress>
+          <Name>I_Start</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="17" CompositionName="Comment">
@@ -214,12 +214,12 @@
       </SW.Tags.PlcTag>
       <SW.Tags.PlcTag ID="19" CompositionName="Tags">
         <AttributeList>
-          <DataTypeName>"UR_9_O2T_Registers"</DataTypeName>
+          <DataTypeName>Bool</DataTypeName>
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q168.0</LogicalAddress>
-          <Name>Q_General_1</Name>
+          <LogicalAddress>%I0.2</LogicalAddress>
+          <Name>I_Stop</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="1A" CompositionName="Comment">
@@ -240,8 +240,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I0.1</LogicalAddress>
-          <Name>I_Start</Name>
+          <LogicalAddress>%I0.3</LogicalAddress>
+          <Name>I_Reset</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="1D" CompositionName="Comment">
@@ -262,8 +262,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I0.2</LogicalAddress>
-          <Name>I_Stop</Name>
+          <LogicalAddress>%I0.4</LogicalAddress>
+          <Name>I_Sensor2</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="20" CompositionName="Comment">
@@ -284,8 +284,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I0.3</LogicalAddress>
-          <Name>I_Reset</Name>
+          <LogicalAddress>%I0.5</LogicalAddress>
+          <Name>I_Sensor3</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="23" CompositionName="Comment">
@@ -306,8 +306,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I0.4</LogicalAddress>
-          <Name>I_Sensor2</Name>
+          <LogicalAddress>%I0.6</LogicalAddress>
+          <Name>I_Sensor4</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="26" CompositionName="Comment">
@@ -328,8 +328,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I0.5</LogicalAddress>
-          <Name>I_Sensor3</Name>
+          <LogicalAddress>%I0.7</LogicalAddress>
+          <Name>I_EStop</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="29" CompositionName="Comment">
@@ -350,8 +350,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I0.6</LogicalAddress>
-          <Name>I_Sensor4</Name>
+          <LogicalAddress>%I1.0</LogicalAddress>
+          <Name>I_Servo</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="2C" CompositionName="Comment">
@@ -372,8 +372,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.0</LogicalAddress>
-          <Name>Q_LagerX_In</Name>
+          <LogicalAddress>%I1.1</LogicalAddress>
+          <Name>VUVS-L20-P53C-MD-G18-F7-1C1</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="2F" CompositionName="Comment">
@@ -394,8 +394,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.1</LogicalAddress>
-          <Name>Q_LagerX_Uit</Name>
+          <LogicalAddress>%I1.4</LogicalAddress>
+          <Name>I_Sensor 5</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="32" CompositionName="Comment">
@@ -412,12 +412,12 @@
       </SW.Tags.PlcTag>
       <SW.Tags.PlcTag ID="34" CompositionName="Tags">
         <AttributeList>
-          <DataTypeName>Bool</DataTypeName>
+          <DataTypeName>"UR_8_O2T_Robot_IO"</DataTypeName>
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I0.7</LogicalAddress>
-          <Name>I_EStop</Name>
+          <LogicalAddress>%Q2.0</LogicalAddress>
+          <Name>Q_Rotot_IO</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="35" CompositionName="Comment">
@@ -434,12 +434,12 @@
       </SW.Tags.PlcTag>
       <SW.Tags.PlcTag ID="37" CompositionName="Tags">
         <AttributeList>
-          <DataTypeName>Bool</DataTypeName>
+          <DataTypeName>"UR_9_O2T_Registers"</DataTypeName>
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q1.0</LogicalAddress>
-          <Name>Q_Servo</Name>
+          <LogicalAddress>%Q168.0</LogicalAddress>
+          <Name>Q_General_1</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="38" CompositionName="Comment">
@@ -460,8 +460,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I1.0</LogicalAddress>
-          <Name>I_Servo</Name>
+          <LogicalAddress>%Q0.0</LogicalAddress>
+          <Name>Q_Lager_Sluis_Uit</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="3B" CompositionName="Comment">
@@ -482,8 +482,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I1.1</LogicalAddress>
-          <Name>VUVS-L20-P53C-MD-G18-F7-1C1</Name>
+          <LogicalAddress>%Q0.1</LogicalAddress>
+          <Name>Q_LagerX_Uit</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="3E" CompositionName="Comment">
@@ -504,8 +504,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.2</LogicalAddress>
-          <Name>Q_Geleider_Veren_Plunjer_Omhoog</Name>
+          <LogicalAddress>%Q1.0</LogicalAddress>
+          <Name>Q_Servo</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="41" CompositionName="Comment">
@@ -526,8 +526,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.3</LogicalAddress>
-          <Name>Q_Geleider_Veren_Plunjer_Omlaag</Name>
+          <LogicalAddress>%Q0.2</LogicalAddress>
+          <Name>Q_Geleider_Veren_Plunjer_Omhoog</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="44" CompositionName="Comment">
@@ -548,8 +548,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.6</LogicalAddress>
-          <Name>Q_Grijper_Open</Name>
+          <LogicalAddress>%Q0.3</LogicalAddress>
+          <Name>Q_Geleider_Veren_Plunjer_Omlaag</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="47" CompositionName="Comment">
@@ -570,8 +570,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.7</LogicalAddress>
-          <Name>Q_Grijper_Dicht</Name>
+          <LogicalAddress>%Q0.6</LogicalAddress>
+          <Name>Q_Grijper_Open</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="4A" CompositionName="Comment">
@@ -592,8 +592,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.4</LogicalAddress>
-          <Name>Q_Plunjer_Pusher_Uit</Name>
+          <LogicalAddress>%Q0.7</LogicalAddress>
+          <Name>Q_Grijper_Dicht</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="4D" CompositionName="Comment">
@@ -614,8 +614,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.5</LogicalAddress>
-          <Name>Q_Plunjer_Pusher_In</Name>
+          <LogicalAddress>%Q0.4</LogicalAddress>
+          <Name>Q_Plunjer_Pusher_Uit</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="50" CompositionName="Comment">
@@ -636,8 +636,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I1.4</LogicalAddress>
-          <Name>I_Sensor 5</Name>
+          <LogicalAddress>%Q0.5</LogicalAddress>
+          <Name>Q_Plunjer_Pusher_In</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="53" CompositionName="Comment">
