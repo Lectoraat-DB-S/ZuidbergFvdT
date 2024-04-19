@@ -26,9 +26,13 @@ BEGIN
 	"AssemblageCel_U_DB"();
 	
 	"Q_Servo" := "AssemblageCel_U_DB".Draaitafel.Servo.Q_Servo_CMD;
-	"Q_Grijper_Open" := "AssemblageCel_U_DB".Lagerpers.Grijper.Q_Uit;
-	"Q_LagerX_Uit" := "AssemblageCel_U_DB".Lagerpers.Geleider.Q_Uit;
+	"Q_Grijper_Lager_Dicht" := "AssemblageCel_U_DB".Lagerpers.Grijper.Q_Uit;
+	"Q_Lager_Geleider_Uit" := "AssemblageCel_U_DB".Lagerpers.Geleider.Q_Uit;
 	"Q_Lager_Sluis_Uit" := "AssemblageCel_U_DB".Lagerpers.Sluis.Q_Uit;
+	"Q_Geleider_Veren_Plunjer_Omhoog" := "AssemblageCel_U_DB".Veerplaatsing.Geleider.Q_In;
+	"Q_Geleider_Veren_Plunjer_Omlaag" := "AssemblageCel_U_DB".Veerplaatsing.Geleider.Q_Uit;
+	"Q_Plunjer_Pusher_Uit" := "AssemblageCel_U_DB".Veerplaatsing.Plunjer_Pusher.Q_Uit;
+	"Q_Sluis_Veren_Plunjer_Uit" := "AssemblageCel_U_DB".Veerplaatsing.Sluis.Q_Uit;
 	"Q_General_1".Bits.Register[0] := "AssemblageCel_U_DB".Cobot.Q_Start_Program;
 	"Q_General_1".Bits.Register[1] := "AssemblageCel_U_DB".Cobot.Q_Ready_Program;
 	"Q_General_1".Bits.Register[2] := "AssemblageCel_U_DB".Gesipa.Q_Place_Rivet;
