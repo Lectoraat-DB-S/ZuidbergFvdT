@@ -61,12 +61,13 @@ BEGIN
 	        
 	    5:
 	        #Lagerpers.Start := FALSE;
+	        #Veerplaatsing.Start := FALSE;
 	        IF #Cobot.Program_Completed THEN
 	            #Stap := #Stap + 1;
 	        END_IF;
 	    6:
 	        #Cobot.I_Loop_Program := FALSE;
-	        IF #Lagerpers.Voltooid THEN
+	        IF #Lagerpers.Voltooid AND #Veerplaatsing.Voltooid THEN
 	            #Stap := 3;
 	        END_IF;
 	        // IF #Lagerpers.Voltooid AND #Veerplaatsing.Voltooid AND #Cobot.Program_Completed THEN

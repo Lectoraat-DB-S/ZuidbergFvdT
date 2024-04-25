@@ -1,0 +1,39 @@
+﻿FUNCTION_BLOCK "Camera_CM"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Start : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Goed : Bool;
+      Fout : Bool;
+   END_VAR
+
+   VAR 
+      Stap : Int;
+      Aantal : Int;
+   END_VAR
+
+
+BEGIN
+	CASE #Stap OF
+	    0:
+	        "Halcon"."OPC Data".Data_Bool := FALSE;
+	        IF #Start THEN
+	            #Aantal := #Aantal + 1; 
+	            #Stap := #Stap + 1;
+	        END_IF;
+	    1:
+	        "Halcon"."OPC Data".Data_Bool := TRUE;
+	        IF "Halcon"."OPC Data".Data_String = 'good' THEN
+	            #Stap := #Stap + 1;
+	        END_IF;
+	        IF "Halcon"."OPC Data".Data_String = 'bad' THEN
+	            #Stap := #Stap + 2;
+	        END_IF;
+	       //uitbreiden met foutafhandeling
+	END_CASE;
+	
+END_FUNCTION_BLOCK
+

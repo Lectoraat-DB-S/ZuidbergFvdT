@@ -1,0 +1,65 @@
+﻿FUNCTION_BLOCK "CilinderB52_CM"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      CMD_In : Bool;
+      CMD_Uit : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Q_Uit : Bool;
+      Cil_In : Bool;
+      Cil_Uit : Bool;
+   END_VAR
+
+   VAR 
+      "timer" {InstructionName := 'IEC_TIMER'; LibVersion := '1.0'; S7_SetPoint := 'False'} : IEC_TIMER;
+      CilinderTime { S7_SetPoint := 'True'} : Time := T#2S;
+      Stap : Int;
+      Cil_Time : Bool;
+      reset : Bool;
+   END_VAR
+
+
+BEGIN
+	//Gebruikte cilinders hebben geen naderingssensoren daarom is er gebruik gemaakt van een timer, dit is echter niet ideaal.
+	CASE #Stap OF
+	    0: // Cilinder is in
+	        #Q_Uit := FALSE;
+	        #Cil_In := TRUE;
+	        #Cil_Uit := FALSE;
+	        IF #CMD_Uit THEN //Commando Cilinder uit vanuit EM
+	            #Stap := #Stap + 1;
+	        END_IF;
+	    1:// Cilinder gaat uit
+	        #Q_Uit := TRUE;
+	        IF #Cil_Time THEN
+	            #Stap := #Stap + 1;
+	        END_IF;
+	    2: //Cilinder is uit
+	        #Cil_In := FALSE;
+	        #Cil_Uit := TRUE;
+	        // #reset := TRUE;
+	        IF #CMD_In THEN //Commando Cilinder in vanuit EM
+	            #Stap := #Stap + 1;
+	        END_IF;
+	    3: // Cilinder gaat in
+	        #Q_Uit := FALSE;
+	        IF #Cil_Time THEN
+	            #Stap := 0;
+	        END_IF;
+	        
+	        
+	    ELSE
+	        #reset := FALSE;
+	END_CASE;
+	#timer.TON(IN:= #Stap = 1 OR #Stap = 3,
+	           PT := T#1S );
+	
+	#Cil_Time := #timer.Q;
+	#reset := FALSE;
+	IF #reset THEN
+	    #Cil_Time := FALSE;
+	END_IF;
+END_FUNCTION_BLOCK
+

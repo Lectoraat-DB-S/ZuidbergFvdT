@@ -13,7 +13,8 @@ VERSION : 0.1
 
    VAR 
       Grijper { S7_SetPoint := 'False'} : "CilinderB52_CM";
-      Geleider : "CilinderB52_CM";
+      Pers : "CilinderB52_CM";
+      Geleider : "CilinderM52_CM";
       Sluis : "CilinderB52_CM";
       EStop : "E-Stop_CM";
       Stap { S7_SetPoint := 'True'} : Int;
@@ -30,10 +31,10 @@ BEGIN
 	        #Geleider.CMD_In := TRUE;
 	        #Geleider.CMD_Uit := FALSE;
 	        #Geleider.CMD_In := TRUE;
-	        #Grijper.CMD_Uit := FALSE;
-	        #Grijper.CMD_In := TRUE;
+	        #Grijper.CMD_Uit := TRUE; //grijper open
+	        #Grijper.CMD_In := FALSE; //grijper dicht
 	        IF #Start THEN
-	            #Stap := 1;
+	            #Stap := #Stap + 1;
 	        END_IF;
 	    1:
 	        #Sluis.CMD_Uit := TRUE;
@@ -41,7 +42,7 @@ BEGIN
 	        #Voltooid := FALSE;
 	        #Gestart := TRUE;
 	        IF #Sluis.Cil_Uit THEN
-	            #Stap := 2;
+	            #Stap := #Stap + 1;
 	        END_IF;
 	        
 	    2:
@@ -49,29 +50,42 @@ BEGIN
 	        #Sluis.CMD_In := TRUE;
 	        
 	        IF #Sluis.Cil_In THEN
-	            #Stap := 3;
+	            #Stap := #Stap + 1;
 	        END_IF;
 	    3:
 	        #Voltooid := FALSE;
-	        #Grijper.CMD_Uit := TRUE;
-	        #Grijper.CMD_In := FALSE;
-	        IF #Grijper.Cil_Uit THEN
-	            #Stap := 4;
+	        #Grijper.CMD_Uit := FALSE;
+	        #Grijper.CMD_In := TRUE;
+	        IF #Grijper.Cil_In THEN
+	            #Stap := #Stap + 1;
 	        END_IF;
 	    4:
 	        #Geleider.CMD_Uit := TRUE;
 	        #Geleider.CMD_In := FALSE;
 	        IF #Geleider.Cil_Uit THEN
-	            #Stap := 5;
+	            #Stap := #Stap + 1;
 	        END_IF;
 	        
 	    5:
-	        #Grijper.CMD_Uit := FALSE;
-	        #Grijper.CMD_In := TRUE;
-	        IF #Grijper.Cil_In THEN
-	            #Stap := 6;
+	        #Grijper.CMD_Uit := TRUE;
+	        #Grijper.CMD_In := FALSE;
+	        IF #Grijper.Cil_Uit THEN
+	            #Stap := #Stap + 1;
 	        END_IF;
+	        
 	    6:
+	        #Pers.CMD_Uit := TRUE;
+	        #Pers.CMD_In := FALSE;
+	        IF #Pers.Cil_Uit THEN
+	            #Stap := #Stap + 1;
+	        END_IF;
+	    7:
+	        #Pers.CMD_Uit := FALSE;
+	        #Pers.CMD_In := TRUE;
+	        IF #Pers.Cil_In THEN
+	            #Stap := #Stap + 1;
+	        END_IF;
+	    8:
 	            #Geleider.CMD_Uit := FALSE;
 	            #Geleider.CMD_In := TRUE;
 	            IF #Geleider.Cil_In THEN
@@ -90,7 +104,7 @@ BEGIN
 	    #Stap := 20;
 	END_IF;
 	
-	
+	#Pers();
 	#Grijper();
 	#Geleider();
 	#Sluis();
