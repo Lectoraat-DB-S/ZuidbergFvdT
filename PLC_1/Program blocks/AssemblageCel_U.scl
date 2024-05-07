@@ -111,6 +111,11 @@ BEGIN
 	    #Stap := 0;
 	END_IF;
 	
+	IF #Lagerpers.PersReady THEN
+	    #Veerplaatsing.Persready := TRUE;
+	ELSE
+	    #Veerplaatsing.Persready := FALSE;
+	END_IF;
 	
 	
 	#Veerplaatsing();

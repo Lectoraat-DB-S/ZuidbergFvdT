@@ -25,13 +25,13 @@ BEGIN
 	
 	"AssemblageCel_U_DB"();
 	
-	
+	"Q_Veren_Sluis_Uit" := "AssemblageCel_U_DB".Veerplaatsing.Sluis.Q_Uit;
 	"Q_Servo" := "AssemblageCel_U_DB".Draaitafel.Servo.Q_Servo_CMD;
 	"Q_Grijper_Dicht" := "AssemblageCel_U_DB".Lagerpers.Grijper.Q_Uit;
 	"Q_Geleider_Lager_UIt" := "AssemblageCel_U_DB".Lagerpers.Geleider.Q_Uit;
 	"Q_Geleider_Lager_In" := "AssemblageCel_U_DB".Lagerpers.Geleider.Q_In;
 	"Q_Lager_Sluis_Uit" := "AssemblageCel_U_DB".Lagerpers.Sluis.Q_Uit;
-	"Q_Veren_Sluis_Uit" := "AssemblageCel_U_DB".Veerplaatsing.Sluis.Q_Uit;
+	"Q_Lagerpers_Uit" := "AssemblageCel_U_DB".Lagerpers.Pers.Q_Uit;
 	"Q_Geleider_Veren_Plunjer_Omhoog" := "AssemblageCel_U_DB".Veerplaatsing.Geleider.Q_Uit;
 	"Q_Geleider_Veren_Plunjer_Omlaag" := "AssemblageCel_U_DB".Veerplaatsing.Geleider.Q_In;
 	"Q_Plunjer_Pusher_Uit" := "AssemblageCel_U_DB".Veerplaatsing.Plunjer_Pusher.Q_Uit;
