@@ -9,6 +9,7 @@ VERSION : 0.1
    VAR_OUTPUT 
       Voltooid : Bool;
       Gestart : Bool;
+      PersReady : Bool;
    END_VAR
 
    VAR 
@@ -23,6 +24,7 @@ VERSION : 0.1
 
 
 BEGIN
+	
 	CASE #Stap OF
 	    0:
 	        #Gestart := FALSE;
@@ -33,6 +35,7 @@ BEGIN
 	        #Geleider.CMD_In := TRUE;
 	        #Grijper.CMD_Uit := TRUE; //grijper open
 	        #Grijper.CMD_In := FALSE; //grijper dicht
+	        #PersReady := FALSE;
 	        IF #Start THEN
 	            #Stap := #Stap + 1;
 	        END_IF;
@@ -80,6 +83,7 @@ BEGIN
 	            #Stap := #Stap + 1;
 	        END_IF;
 	    7:
+	        #PersReady := TRUE;
 	        #Pers.CMD_Uit := FALSE;
 	        #Pers.CMD_In := TRUE;
 	        IF #Pers.Cil_In THEN
@@ -103,6 +107,7 @@ BEGIN
 	    END_IF;
 	    #Stap := 20;
 	END_IF;
+	
 	
 	#Pers();
 	#Grijper();

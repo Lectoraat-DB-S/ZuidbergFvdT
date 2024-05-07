@@ -16,5 +16,12 @@ BEGIN
 	ELSE
 	    #EStop_Active := FALSE;
 	END_IF;
+	
+	IF "I_State".Safety."ES: Is emergency stopped" THEN
+	    #EStop_Active := TRUE;
+	ELSE
+	    #EStop_Active := FALSE;
+	END_IF;
+	
 END_FUNCTION_BLOCK
 
