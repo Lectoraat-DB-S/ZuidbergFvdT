@@ -41,11 +41,7 @@ BEGIN
 	"Q_General_1".Bits.Register[2] := "AssemblageCel_U_DB".Gesipa.Q_Place_Rivet;
 	"Q_General_1".Bits.Register[3] := "AssemblageCel_U_DB".Gesipa.Q_Rivets_Placed;
 	"Q_General_1".Bits.Register[4] := "AssemblageCel_U_DB".Cobot.Q_Stop_Program;
+	"Q_General_1".Bits.Register[5] := "AssemblageCel_U_DB".Cobot.Q_Pomp_Fout;
 	"Q_Rotot_IO".IOs."Configurable digital outputs" := "AssemblageCel_U_DB".Cobot.Q_OUT;
-	
-	"communicatie_DB"();
-	
-	
-	
 END_ORGANIZATION_BLOCK
 
