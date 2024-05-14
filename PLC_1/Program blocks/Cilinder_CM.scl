@@ -26,10 +26,12 @@ VERSION : 0.1
 BEGIN
 	CASE #Stap OF
 	    0: //cilinder is In wordt Out gemaakt
-	        #reset := TRUE;
+
+	        //#reset := TRUE;
 	        #Q_In := TRUE;
 	        #Q_Uit := FALSE;
-	        IF #CMD_Uit OR #Cil_Uit//AND NOT #I_CMD_In
+	        #Cil_In := TRUE;
+	        IF #CMD_Uit//AND NOT #I_CMD_In
 	            THEN
 	            #Stap := #Stap + 1;
 	        END_IF;
@@ -37,20 +39,24 @@ BEGIN
 	    1: //maak cilinder Out
 	        #Q_Uit := TRUE;
 	        #Q_In := FALSE;
+	        #Cil_In := FALSE;
 	        IF #Cil_Time THEN
 	            #Stap := #Stap + 1;
 	        END_IF;
 	        
 	    2: //cilinder is Out wordt In gemaakt
-	        #reset := TRUE;
+	        //#reset := TRUE;
+	        #Cil_Uit := TRUE;
 	        #Q_Uit := TRUE;
 	        #Q_In := FALSE;
-	        IF #CMD_In OR #Cil_In//AND NOT #I_CMD_Uit
+	        IF #CMD_In //AND NOT #I_CMD_Uit
+
 	            THEN
 	            #Stap := #Stap + 1;
 	        END_IF;
 	        
 	    3: //maak cilinder In
+	        #Cil_Uit := FALSE;
 	        #Q_In := TRUE;
 	        #Q_Uit := FALSE;
 	        IF #Cil_Time THEN
@@ -61,8 +67,8 @@ BEGIN
 	END_CASE;
 	
 	#Timer.TON(IN := #Stap = 1 OR #Stap = 3,
-	           PT := #CilinderTime);
-	
+	           PT := T#1s);
+
 	#Cil_Time := #Timer.Q;
 	
 	IF #reset THEN

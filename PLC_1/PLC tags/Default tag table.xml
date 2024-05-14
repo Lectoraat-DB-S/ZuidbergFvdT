@@ -2,7 +2,8 @@
 <Document>
   <Engineering version="V16" />
   <DocumentInfo>
-    <Created>2024-04-18T08:23:56.1906557Z</Created>
+    <Created>2024-05-14T12:48:44.8683644Z</Created>
+
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -482,8 +483,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.1</LogicalAddress>
-          <Name>Q_LagerX_Uit</Name>
+          <LogicalAddress>%Q1.1</LogicalAddress>
+          <Name>Q_Servo</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="3E" CompositionName="Comment">
@@ -505,7 +506,7 @@
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
           <LogicalAddress>%Q1.0</LogicalAddress>
-          <Name>Q_Servo</Name>
+          <Name>Q_Geleider_Veren_Plunjer_Omhoog</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="41" CompositionName="Comment">
@@ -526,8 +527,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.2</LogicalAddress>
-          <Name>Q_Geleider_Veren_Plunjer_Omhoog</Name>
+          <LogicalAddress>%Q0.7</LogicalAddress>
+          <Name>Q_Geleider_Veren_Plunjer_Omlaag</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="44" CompositionName="Comment">
@@ -548,8 +549,9 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.3</LogicalAddress>
-          <Name>Q_Geleider_Veren_Plunjer_Omlaag</Name>
+
+          <LogicalAddress>%Q0.1</LogicalAddress>
+          <Name>Q_Grijper_Dicht</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="47" CompositionName="Comment">
@@ -570,8 +572,9 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.6</LogicalAddress>
-          <Name>Q_Grijper_Open</Name>
+
+          <LogicalAddress>%Q0.4</LogicalAddress>
+          <Name>Q_Plunjer_Pusher_Uit</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="4A" CompositionName="Comment">
@@ -592,8 +595,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.7</LogicalAddress>
-          <Name>Q_Grijper_Dicht</Name>
+          <LogicalAddress>%Q0.6</LogicalAddress>
+          <Name>Q_Geleider_Lager_In</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="4D" CompositionName="Comment">
@@ -614,8 +617,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.4</LogicalAddress>
-          <Name>Q_Plunjer_Pusher_Uit</Name>
+          <LogicalAddress>%Q0.5</LogicalAddress>
+          <Name>Q_Geleider_Lager_UIt</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="50" CompositionName="Comment">
@@ -636,13 +639,35 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.5</LogicalAddress>
-          <Name>Q_Plunjer_Pusher_In</Name>
+          <LogicalAddress>%Q0.2</LogicalAddress>
+          <Name>Q_Veren_Sluis_Uit</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="53" CompositionName="Comment">
             <ObjectList>
               <MultilingualTextItem ID="54" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="55" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q0.3</LogicalAddress>
+          <Name>Q_Lagerpers_Uit</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="56" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="57" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
                   <Text />

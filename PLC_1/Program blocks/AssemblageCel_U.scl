@@ -61,18 +61,16 @@ BEGIN
 	        
 	    5:
 	        #Lagerpers.Start := FALSE;
+
+	        #Veerplaatsing.Start := FALSE;
 	        IF #Cobot.Program_Completed THEN
 	            #Stap := #Stap + 1;
 	        END_IF;
 	    6:
 	        #Cobot.I_Loop_Program := FALSE;
-<<<<<<< Updated upstream
-	        IF #Lagerpers.Voltooid THEN
-	            #Stap := 3;
-=======
+
 	        IF #Lagerpers.Voltooid AND #Veerplaatsing.Voltooid THEN
 	            #Stap := 7;
->>>>>>> Stashed changes
 	        END_IF;
 	    7:
 	     //   IF //visionTHEN
@@ -118,6 +116,11 @@ BEGIN
 	    #Stap := 0;
 	END_IF;
 	
+	IF #Lagerpers.PersReady THEN
+	    #Veerplaatsing.Persready := TRUE;
+	ELSE
+	    #Veerplaatsing.Persready := FALSE;
+	END_IF;
 	
 	
 	#Veerplaatsing();
