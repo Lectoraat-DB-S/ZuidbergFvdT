@@ -30,15 +30,15 @@ BEGIN
 	            #Q_Servo_CMD := TRUE;
 	            #stap := 1;
 	        END_IF;
-	    1: 
+	    1:
 	        IF #I_Servo_CMD THEN
 	            #Q_Servo_Klaar := TRUE;
 	            #stap := 0;
 	        END_IF;
-	 
 	        
-	  //  ELSE
-	     //   #Q_Servo_Klaar := False;
+	        
+	        //  ELSE
+	        //   #Q_Servo_Klaar := False;
 	        
 	END_CASE;
 	
@@ -51,6 +51,6 @@ BEGIN
 	IF #I_Servo_Inhome THEN
 	    #Q_Servo_Home := FALSE;
 	END_IF;
-	    
+	
 END_FUNCTION_BLOCK
 

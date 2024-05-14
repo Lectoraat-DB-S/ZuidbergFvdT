@@ -49,10 +49,10 @@ BEGIN
 	            #Stap := 3;
 	        END_IF;
 	        
-	    3:  
+	    3:
 	        #Q_Ready_Program := TRUE;
 	        IF #Position THEN
-	            #Stap:= 4;
+	            #Stap := 4;
 	        END_IF;
 	        
 	    4:
