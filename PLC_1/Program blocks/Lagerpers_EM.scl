@@ -26,9 +26,8 @@ VERSION : 0.1
 
 
 BEGIN
-	
 	CASE #Stap OF
-	    0:
+	    0: //start
 	        #Gestart := FALSE;
 	        #Voltooid := TRUE;
 	        #Geleider.CMD_Uit := FALSE;
