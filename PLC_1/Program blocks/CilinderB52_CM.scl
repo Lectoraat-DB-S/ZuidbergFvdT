@@ -53,8 +53,8 @@ BEGIN
 	    ELSE
 	        #reset := FALSE;
 	END_CASE;
-	#timer.TON(IN := #Stap = 1 OR #Stap = 3,
-	           PT := T#1S);
+	#timer.TON(IN:= #Stap = 1 OR #Stap = 3,
+	           PT := T#1S );
 	
 	#Cil_Time := #timer.Q;
 	#reset := FALSE;

@@ -68,14 +68,17 @@ BEGIN
 	    6:
 	        #Cobot.I_Loop_Program := FALSE;
 	        IF #Lagerpers.Voltooid AND #Veerplaatsing.Voltooid THEN
-	            #Stap := 3;
+	            #Stap := 7;
 	        END_IF;
-	        // IF #Lagerpers.Voltooid AND #Veerplaatsing.Voltooid AND #Cobot.Program_Completed THEN
-	        //     #Cobot.I_Start_Program := FALSE;
-	        //     #Veerplaatsing.Start := FALSE;
-	        //     #Lagerpers.Start := FALSE;
-	        //      #Stap:= 3;
-	        //  END_IF;
+	    7:
+	     //   IF //visionTHEN
+	            #Stap := #Stap + 1;
+	      //  ELSE
+	            #Cobot.Pomp_Fout := FALSE;
+	            #Stap := 3;
+	       // END_IF;
+	    
+	        
 	        
 	        
 	    20: //pauzestate (stopbutton), wacht op startbutton
