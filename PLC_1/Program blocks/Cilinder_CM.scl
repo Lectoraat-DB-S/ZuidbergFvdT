@@ -1,75 +1,73 @@
-﻿FUNCTION_BLOCK "Cilinder_CM"
+﻿FUNCTION_BLOCK "CilinderM52_CM"
 { S7_Optimized_Access := 'TRUE' }
 VERSION : 0.1
    VAR_INPUT 
-      I_Cil_In : Bool;
-      HMI_In : Bool;
-      HMI_Uit : Bool;
-      I_Cil_Uit : Bool;
-      I_CMD_In : Bool;
-      I_CMD_Uit : Bool;
+      CMD_In : Bool;
+      CMD_Uit : Bool;
    END_VAR
 
    VAR_OUTPUT 
-      Q_Cil_Uit : Bool;
-      Q_Cil_In : Bool;
-      Q_CMD_In : Bool;
-      Q_CMD_Uit : Bool;
+      Q_Uit : Bool;
+      Q_In : Bool;
+      Cil_In : Bool;
+      Cil_Uit : Bool;
       Q_Error : Bool;
    END_VAR
 
    VAR 
       Stap : Int;
       "Timer" {InstructionName := 'IEC_TIMER'; LibVersion := '1.0'; S7_SetPoint := 'False'} : IEC_TIMER;
+      Cil_Time { S7_SetPoint := 'True'} : Bool;
+      reset { S7_SetPoint := 'True'} : Bool;
+      CilinderTime : Time;
    END_VAR
 
 
 BEGIN
 	CASE #Stap OF
 	    0: //cilinder is In wordt Out gemaakt
-	        #Q_Cil_In := TRUE;
-	        #Q_Cil_Uit := FALSE;
-	        IF #I_CMD_Uit OR #Q_CMD_Uit//AND NOT #I_CMD_In
+	        #reset := TRUE;
+	        #Q_In := TRUE;
+	        #Q_Uit := FALSE;
+	        IF #CMD_Uit OR #Cil_Uit//AND NOT #I_CMD_In
 	            THEN
 	            #Stap := #Stap + 1;
 	        END_IF;
 	        
 	    1: //maak cilinder Out
-	        #Q_Cil_Uit := TRUE;
-	        #Q_Cil_In := FALSE;
-	        IF #I_Cil_Uit THEN
+	        #Q_Uit := TRUE;
+	        #Q_In := FALSE;
+	        IF #Cil_Time THEN
 	            #Stap := #Stap + 1;
 	        END_IF;
 	        
 	    2: //cilinder is Out wordt In gemaakt
-	        #Q_Cil_Uit := TRUE;
-	        #Q_Cil_In := FALSE;
-	        IF #I_CMD_In OR #Q_CMD_In//AND NOT #I_CMD_Uit
+	        #reset := TRUE;
+	        #Q_Uit := TRUE;
+	        #Q_In := FALSE;
+	        IF #CMD_In OR #Cil_In//AND NOT #I_CMD_Uit
 	            THEN
 	            #Stap := #Stap + 1;
 	        END_IF;
 	        
 	    3: //maak cilinder In
-	        #Q_Cil_In := TRUE;
-	        #Q_Cil_Uit := FALSE;
-	        IF #I_Cil_In THEN
+	        #Q_In := TRUE;
+	        #Q_Uit := FALSE;
+	        IF #Cil_Time THEN
 	            #Stap := 0;
 	        END_IF;
+	    ELSE
+	        #reset := FALSE;
 	END_CASE;
 	
-	#Q_CMD_Uit := #I_CMD_Uit;
-	#Q_CMD_In := #I_CMD_In;
+	#Timer.TON(IN := #Stap = 1 OR #Stap = 3,
+	           PT := #CilinderTime);
 	
+	#Cil_Time := #Timer.Q;
 	
-	//#Timer.TON(
-	//IN := #Stap = 1 OR #Stap = 3,
-	//PT := T#5S
-	//);
-	
-	//#Q_Error := #Timer.Q;
-	//IF #Timer.Q THEN
-	//    #Q_Error := TRUE;
-	//END_IF;
+	IF #reset THEN
+	    #Cil_Time := FALSE;
+	END_IF;
 	
 	
 	

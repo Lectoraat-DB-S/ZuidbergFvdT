@@ -16,5 +16,10 @@ VERSION : 0.1
 
 
 BEGIN
+	IF #I_Place_Rivet THEN
+	    #Q_Place_Rivet := TRUE;
+	ELSE
+	    #Q_Place_Rivet := FALSE;
+	END_IF;
 END_FUNCTION_BLOCK
 
