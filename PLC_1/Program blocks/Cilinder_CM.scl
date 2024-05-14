@@ -31,7 +31,7 @@ BEGIN
 	        #Q_Uit := FALSE;
 	        #Cil_In := TRUE;
 	        IF #CMD_Uit//AND NOT #I_CMD_In
-	            THEN
+	        THEN
 	            #Stap := #Stap + 1;
 	        END_IF;
 	        
@@ -49,7 +49,7 @@ BEGIN
 	        #Q_Uit := TRUE;
 	        #Q_In := FALSE;
 	        IF #CMD_In //AND NOT #I_CMD_Uit
-	            THEN
+	        THEN
 	            #Stap := #Stap + 1;
 	        END_IF;
 	        
