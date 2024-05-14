@@ -8,6 +8,7 @@ VERSION : 0.1
       Position : Bool;
       Cobot_Active : Bool;
       Program_Completed : Bool;
+      Pomp_Fout : Bool;
    END_VAR
 
    VAR_OUTPUT 
@@ -15,6 +16,7 @@ VERSION : 0.1
       Q_Stop_Program : Bool;
       Q_Ready_Program : Bool;
       Q_OUT : USInt;
+      Q_Pomp_Fout : Bool;
    END_VAR
 
    VAR 
@@ -27,9 +29,14 @@ VERSION : 0.1
 BEGIN
 	CASE #Stap OF
 	    0: //Wacht op start vanuit Unit
-	        #Q_Ready_Program := TRUE; //Bit 1
+	        
 	        #Q_Start_Program := FALSE; //Bit 0
+	        
+	        #Q_Ready_Program := TRUE; //Bit 1
+	        
 	        #Q_Stop_Program := TRUE; //Bit 2
+	        
+	        #Q_Pomp_Fout := FALSE;
 	        IF #I_Start_Program THEN
 	            #Stap := 1;
 	        END_IF;
@@ -49,19 +56,30 @@ BEGIN
 	            #Stap := 3;
 	        END_IF;
 	        
-	    3:  
+	    3:
+	        IF #Pomp_Fout THEN
+	            #Stap := 10;
+	        ELSE
+	            #Stap := 4;
+	        END_IF;
+	    4: 
 	        #Q_Ready_Program := TRUE;
 	        IF #Position THEN
-	            #Stap:= 4;
+	            #Stap:= 5;
 	        END_IF;
 	        
-	    4:
+	    6:
 	        #Q_Ready_Program := FALSE;
 	        IF #Program_Completed THEN
 	            #Stap := 2;
 	        END_IF;
 	        
-	        
+	    10:
+	        #Q_Pomp_Fout := TRUE;
+	       // IF..THEN
+	            #Q_Pomp_Fout := false;
+	            #Stap := 5;
+	   //     END_IF;
 	    20:
 	        IF "AssemblageCel_U_DB".Start THEN
 	            #Stap := #Prev_Stap;
