@@ -33,7 +33,6 @@ BEGIN
 	        #Plunjer_Pusher.CMD_Uit := FALSE;
 	        #Voltooid := TRUE;
 	        #Persready := FALSE;
-
 	        IF #Start THEN
 	            #Stap := #Stap + 1;
 	        END_IF;
@@ -55,7 +54,6 @@ BEGIN
 	        #Sluis.CMD_Uit := TRUE;
 	        IF #Sluis.Cil_Uit THEN
 	            #Stap := #Stap + 1;
-
 	        END_IF;
 	    4: 
 	        //plunjer nadrukken
@@ -82,7 +80,6 @@ BEGIN
 	        IF #Geleider.Cil_In THEN
 	            #Stap := 0;
 	        END_IF;
-
 	    20: //stopstate
 	        IF #Start THEN
 	            #Stap := #Prev_Stap;
