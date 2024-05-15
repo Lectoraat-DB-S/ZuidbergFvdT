@@ -17,6 +17,7 @@ VERSION : 0.1
       Cobot : "Cobot_EM";
       Gesipa : "Gesipa_CM";
       EStop : "E-Stop_CM";
+      Pomp_Fout { S7_SetPoint := 'True'} : Bool;
    END_VAR
 
 
@@ -67,18 +68,21 @@ BEGIN
 	        END_IF;
 	    6:
 	        #Cobot.I_Loop_Program := FALSE;
+	        IF #Pomp_Fout THEN
+	            #Cobot.Pomp_Fout := TRUE;
+	        END_IF;
+	        
 	        IF #Lagerpers.Voltooid AND #Veerplaatsing.Voltooid THEN
 	            #Stap := 7;
 	        END_IF;
-	    7:
-	     //   IF //visionTHEN
-	            #Stap := #Stap + 1;
+	    //7:
+	        //IF Vision THEN
+	        //    #Pomp_Fout := TRUE;
+	       //     #Stap := 3;
 	      //  ELSE
-	            #Cobot.Pomp_Fout := FALSE;
-	            #Stap := 3;
-	       // END_IF;
-	    
-	        
+	      //      #Pomp_Fout := FALSE;
+	      //      #Stap := 3;
+	      //  END_IF;
 	        
 	        
 	    20: //pauzestate (stopbutton), wacht op startbutton

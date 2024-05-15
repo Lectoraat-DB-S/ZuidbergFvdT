@@ -89,11 +89,11 @@ BEGIN
 	            #Stap := #Stap + 1;
 	        END_IF;
 	    8:
-	            #Geleider.CMD_Uit := FALSE;
-	            #Geleider.CMD_In := TRUE;
-	            IF #Geleider.Cil_In THEN
-	                #Stap := 0;
-	            END_IF;
+	        #Geleider.CMD_Uit := FALSE;
+	        #Geleider.CMD_In := TRUE;
+	        IF #Geleider.Cil_In THEN
+	            #Stap := 0;
+	        END_IF;
 	    20:
 	        IF "AssemblageCel_U_DB".Start THEN
 	            #Stap := #Prev_Stap;
