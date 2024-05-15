@@ -62,10 +62,10 @@ BEGIN
 	        ELSE
 	            #Stap := 4;
 	        END_IF;
-	    4: 
+	    4:
 	        #Q_Ready_Program := TRUE;
 	        IF #Position THEN
-	            #Stap:= 5;
+	            #Stap := 5;
 	        END_IF;
 	        
 	    6:
@@ -76,10 +76,10 @@ BEGIN
 	        
 	    10:
 	        #Q_Pomp_Fout := TRUE;
-	       // IF..THEN
-	            #Q_Pomp_Fout := false;
-	            #Stap := 5;
-	   //     END_IF;
+	        IF #Program_Completed THEN
+	        #Q_Pomp_Fout := false;
+	        #Stap := 2;
+	        END_IF;
 	    20:
 	        IF "AssemblageCel_U_DB".Start THEN
 	            #Stap := #Prev_Stap;
